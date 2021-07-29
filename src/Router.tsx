@@ -1,9 +1,20 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
-import Home from './pages/Home';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Home from './components/home/Home';
+import Interview from './components/interview/Interview';
+import Search from './components/search/Search';
 
 function Router() {
-  return <Route path="/" component={Home} />;
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/search" component={Search} />
+        <Route exact path="/interview" component={Interview} />
+        <Route exact path="*" component={Home} />
+      </Switch>
+    </BrowserRouter>
+  );
 }
 
 export default Router;
