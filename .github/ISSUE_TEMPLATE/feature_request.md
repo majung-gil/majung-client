@@ -1,8 +1,8 @@
 ---
 name: Feature request
 about: Suggest an idea for this project
-title: "[feature] "
-labels: ''
+title: "[feat]: 이거 추가"
+labels: "\U0001FAA7 feat"
 assignees: 2ujin
 
 ---
