@@ -5,7 +5,7 @@ const GlobalStyle = createGlobalStyle`
     ${reset}
     body * {
         z-index: 1;
-        background-color: #fff;
+        /* background-color: #fff; */
         margin: 0;
         padding: 0;
         color: #27282a;
@@ -54,10 +54,10 @@ const GlobalStyle = createGlobalStyle`
     
         margin: 0;
         padding: 0;
-        .main {
+        .wrapper {
             margin: 0 auto;
             height: 100vh;
-            max-width: 550px;
+            max-width: 480px;
     
             -webkit-box-shadow: 0px 0px 22px -2px rgba(0, 0, 0, 0.75);
             -moz-box-shadow: 0px 0px 22px -2px rgba(0, 0, 0, 0.75);
@@ -77,7 +77,7 @@ const GlobalStyle = createGlobalStyle`
     
         margin: 0;
         padding: 0;
-        .main {
+        .wrapper {
             // max-width:430px;
             height: 100vh;
             width: 100%;
