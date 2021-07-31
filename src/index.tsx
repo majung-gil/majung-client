@@ -14,7 +14,9 @@ ReactDOM.render(
     <BrowserRouter>
       <ThemeProvider theme={Theme}>
         <GlobalStyle />
-        <App />
+        <div className="wrapper">
+          <App />
+        </div>
       </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>,
