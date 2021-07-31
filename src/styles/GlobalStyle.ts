@@ -3,17 +3,102 @@ import reset from 'styled-reset';
 
 const GlobalStyle = createGlobalStyle`
     ${reset}
-
-    * {
-        box-sizing: border-box;
-
+    body * {
+        z-index: 1;
+        background-color: #fff;
         margin: 0;
+        padding: 0;
+        color: #27282a;
     }
-
-    html, body, #root {
+    
+    input {
         width: 100%;
-        height: 100%;
+        border: none;
+        height: 50px;
+        padding: 0 20px;
+        margin-bottom: 10px;
+        background-color: #fff;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        box-sizing: border-box;
+        color: #27282a;
     }
+    
+    input:focus {
+        color: black;
+        //input 박스 테두리
+        outline: none;
+    }
+    
+    textarea:focus {
+        outline: none;
+    }
+    
+    select:focus {
+        outline: none;
+    }
+    
+    button {
+        color: white;
+        background-color: #4b81e7;
+        padding: 10px;
+        border-radius: 20px;
+        border: none;
+        width: 100%;
+    }
+    
+    @media screen and (min-width: 769px) {
+        body {
+        // font-size: 20px;
+    
+        margin: 0;
+        padding: 0;
+        .main {
+            margin: 0 auto;
+            height: 100vh;
+            max-width: 550px;
+    
+            -webkit-box-shadow: 0px 0px 22px -2px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 0px 0px 22px -2px rgba(0, 0, 0, 0.75);
+            box-shadow: 0px 0px 22px -2px rgba(0, 0, 0, 0.75);
+        }
+    
+        background: #f6f6f6 !important; //html배경색상은 고정
+        }
+    }
+    
+    // 앱
+    @media screen and (max-width: 768px) {
+        body {
+        // font-size: 16px;
+        // border:1px solid red;
+        background: white;
+    
+        margin: 0;
+        padding: 0;
+        .main {
+            // max-width:430px;
+            height: 100vh;
+            width: 100%;
+            margin: 0 auto;
+            // margin-left:50%;
+            // border:1px solid #efefef;
+        }
+        }
+    }
+    
+    .wrap {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: center;
+    }
+    
+    .padding {
+        padding: 20px;
+    }
+  
 `;
 
 export default GlobalStyle;
