@@ -55,11 +55,14 @@ const TopTitleWrapper = styled.div`
 
 // 하단 카페리스트 영역
 const CafeCardListWrapper = styled.div`
-  height: 20%;
+  /* height: 20%; */
+  position: absolute;
+  bottom: 0;
   padding: 20px 25px;
   display: flex;
   flex-wrap: nowrap;
   overflow-x: scroll;
+  background: transparent !important;
 `;
 
 const CafeCardWrpper = styled.div`
@@ -71,6 +74,7 @@ const CafeCardWrpper = styled.div`
   flex-direction: column;
   border: 0.6px solid #e3e7e9;
   box-shadow: 0 10px 20px #e3e7e9, 0 6px 6px #e3e7e9;
+  background-color: #fbfbfb;
 `;
 
 const CafeCardTop = styled.div`
@@ -115,6 +119,16 @@ declare global {
 }
 
 function Home() {
+  useEffect(() => {
+    const container = document.getElementById('map');
+    const options = {
+      center: new window.kakao.maps.LatLng(33.450701, 126.570667),
+      level: 3,
+    };
+
+    const map = new window.kakao.maps.Map(container, options);
+  }, []);
+
   return (
     <Wrapper>
       <TopWrapper>
@@ -128,7 +142,8 @@ function Home() {
         </TopTitleWrapper>
       </TopWrapper>
 
-      <CafeCardListWrapper>
+      <div id="map" style={{ width: '100%', height: '100%' }} />
+      <CafeCardListWrapper className="cardList">
         {testArr.map((item, index) => (
           <CafeCardWrpper>
             <CafeCardTop>
