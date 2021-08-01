@@ -66,6 +66,10 @@ const GlobalStyle = createGlobalStyle`
     
         background: #f6f6f6 !important; //html배경색상은 고정
         }
+
+        .cardList{
+            max-width: 430px;
+        }
     }
     
     // 앱
@@ -85,6 +89,11 @@ const GlobalStyle = createGlobalStyle`
             // margin-left:50%;
             // border:1px solid #efefef;
         }
+        }
+
+
+        .cardList{
+            max-width: 100%;
         }
     }
     
