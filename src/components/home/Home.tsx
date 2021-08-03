@@ -42,6 +42,7 @@ const TopTitleWrapper = styled.div`
   h3 {
     margin: 0;
     font-size: 1.5rem;
+    color: ${(props) => props.theme.mainColor};
   }
   p {
     font-size: 1rem;

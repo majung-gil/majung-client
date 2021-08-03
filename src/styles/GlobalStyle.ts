@@ -3,12 +3,20 @@ import reset from 'styled-reset';
 
 const GlobalStyle = createGlobalStyle`
     ${reset}
+    @font-face {
+        font-family: 'GmarketSansMedium';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
     body * {
         z-index: 1;
         /* background-color: #fff; */
         margin: 0;
         padding: 0;
         color: #27282a;
+        font-family: 'GmarketSansMedium';
     }
     
     input {
