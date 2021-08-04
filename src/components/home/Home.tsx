@@ -15,21 +15,38 @@ const TopWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 20px 25px;
+  width: 79%;
+  padding: 15px 25px;
+  border-radius: 16px;
+  background: #fbfbfb;
+  border: 1px solid rgba(241, 243, 245, 0.4);
+  box-shadow: 4.4698px 4.4698px 9.38657px -3.57584px #ccd3d7;
+  background-color: ${(props) => props.theme.white};
+`;
+
+const Top = styled.div`
+  width: 88%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 10px;
+  z-index: 200;
   height: 15%;
-  background-color: #f3f3f3;
 `;
 
 // 상단 툴바
 const Toolbar = styled.div`
   flex: 1;
   display: flex;
-  width: 100%;
+  /* width: 100%; */
   margin-left: auto;
   justify-content: center;
   align-items: center;
 `;
-
+const IconHeart = styled.div`
+  margin-left: auto;
+`;
 const IconCoffe = styled.div`
   margin-left: auto;
 `;
@@ -63,6 +80,7 @@ const CafeCardListWrapper = styled.div`
   display: flex;
   flex-wrap: nowrap;
   overflow-x: scroll;
+  z-index: 200;
   background: transparent !important;
 `;
 
@@ -103,6 +121,8 @@ const Img = styled.img`
   height: 100%;
 `;
 
+const Icon = styled.img``;
+
 const CafeTag = styled.div`
   background-color: blueviolet;
   border-radius: 15px;
@@ -123,27 +143,49 @@ function Home() {
   useEffect(() => {
     const container = document.getElementById('map');
     const options = {
-      center: new window.kakao.maps.LatLng(33.450701, 126.570667),
+      center: new window.kakao.maps.LatLng(37.56019115294959, 126.83112338892903),
       level: 3,
     };
 
+    const imageSrc = `${process.env.PUBLIC_URL}/img/cafe_pin.svg`; // 마커이미지의 주소입니다
+    const imageSize = new window.kakao.maps.Size(50, 54); // 마커이미지의 크기입니다
+    const imageOption = { offset: new window.kakao.maps.Point(27, 54) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+    // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+    const markerImage = new window.kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+
     const map = new window.kakao.maps.Map(container, options);
+    const markerPosition = new window.kakao.maps.LatLng(37.560616811298324, 126.83266169049234);
+
+    // 마커를 생성합니다
+    const marker = new window.kakao.maps.Marker({
+      position: markerPosition,
+      image: markerImage, // 마커이미지 설정
+    });
+
+    marker.setMap(map);
   }, []);
 
   return (
-    <Wrapper>
-      <TopWrapper>
-        <Toolbar>
-          <IconCoffe>검색</IconCoffe>
-          <IconSort>정렬</IconSort>
-        </Toolbar>
-        <TopTitleWrapper>
-          <h3>마중</h3>
-          <p>☕️ 따뜻한 오후, 커피 한 잔 어떠세요?</p>
-        </TopTitleWrapper>
-      </TopWrapper>
-
-      <div id="map" style={{ width: '100%', height: '100%' }} />
+    // <Wrapper>
+    <>
+      <Top className="cardList">
+        <TopWrapper>
+          <Toolbar>
+            <IconCoffe>
+              <Icon alt="today_img" src={`${process.env.PUBLIC_URL}/icon/search.svg`} />
+            </IconCoffe>
+            <IconSort>
+              <Icon alt="today_img" src={`${process.env.PUBLIC_URL}/icon/sidemenu.svg`} />
+            </IconSort>
+          </Toolbar>
+          <TopTitleWrapper>
+            <h3>마중</h3>
+            <p>따뜻한 오후, 커피 한 잔 어떠세요?</p>
+          </TopTitleWrapper>
+        </TopWrapper>
+      </Top>
+      <div id="map" style={{ width: '100%', height: '100%', zIndex: 2, overflow: 'hidden' }} />
       <CafeCardListWrapper className="cardList">
         {testArr.map((item, index) => (
           <CafeCardWrpper>
@@ -160,7 +202,8 @@ function Home() {
           </CafeCardWrpper>
         ))}
       </CafeCardListWrapper>
-    </Wrapper>
+    </>
+    // </Wrapper>
   );
 }
 

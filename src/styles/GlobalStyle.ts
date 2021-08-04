@@ -72,11 +72,14 @@ const GlobalStyle = createGlobalStyle`
             box-shadow: 0px 0px 22px -2px rgba(0, 0, 0, 0.75);
         }
     
-        background: #f6f6f6 !important; //html배경색상은 고정
+        /* background: #f6f6f6 !important; //html배경색상은 고정 */
         }
 
         .cardList{
             max-width: 430px;
+        }
+        .top{
+            width: 430px;
         }
     }
     
@@ -85,8 +88,8 @@ const GlobalStyle = createGlobalStyle`
         body {
         // font-size: 16px;
         // border:1px solid red;
-        background: white;
-    
+        /* background: white; */
+        overflow: hidden;
         margin: 0;
         padding: 0;
         .wrapper {
@@ -98,10 +101,11 @@ const GlobalStyle = createGlobalStyle`
             // border:1px solid #efefef;
         }
         }
-
-
         .cardList{
             max-width: 100%;
+        }
+        .top{
+            width: 380px;
         }
     }
     
