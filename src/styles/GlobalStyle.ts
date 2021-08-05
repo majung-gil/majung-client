@@ -76,7 +76,7 @@ const GlobalStyle = createGlobalStyle`
         }
 
         .cardList{
-            width: 100%
+            width: 450px;
         }
         .top{
             width: 430px;
@@ -102,7 +102,7 @@ const GlobalStyle = createGlobalStyle`
         }
         }
         .cardList{
-            width: 320px;
+            width: 350px;
         }
         .top{
             width: 380px;
