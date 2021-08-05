@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Img } from './Common';
 
 const CafeCardWrpper = styled.div`
   margin: 5px;
@@ -34,10 +35,6 @@ const CafeCardImg = styled.div`
   /* flex: 1.8; */
   border-radius: 0px 0px 20px 20px;
   overflow: hidden;
-`;
-const Img = styled.img`
-  width: 100%;
-  height: 100%;
 `;
 
 const Icon = styled.img``;

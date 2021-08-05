@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ImgChracter } from '../common/Common';
 
 // 마중 상단 영역
 const TopWrapper = styled.div`
@@ -48,6 +49,7 @@ const TopTitleWrapper = styled.div`
   h3 {
     margin: 0;
     font-size: 28px;
+    letter-spacing: 2.5px;
     color: ${(props) => props.theme.mainColor};
   }
   span {
@@ -60,6 +62,7 @@ const TopTitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
 `;
 
 const Icon = styled.img``;
@@ -79,6 +82,7 @@ function TopHome() {
         <TopTitleWrapper>
           <h3>마중</h3>
           <span>따뜻한 오후, 커피 한 잔 어떠세요?</span>
+          <ImgChracter src={`${process.env.PUBLIC_URL}/img/c_majung.svg`} />
         </TopTitleWrapper>
       </TopWrapper>
     </Top>
