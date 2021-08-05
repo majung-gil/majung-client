@@ -15,7 +15,8 @@ const TopWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 79%;
+  width: 100%;
+  height: 100px;
   padding: 15px 25px;
   border-radius: 16px;
   background: #fbfbfb;
@@ -25,12 +26,13 @@ const TopWrapper = styled.div`
 `;
 
 const Top = styled.div`
-  width: 88%;
+  width: 95%;
   display: flex;
   align-items: center;
   justify-content: center;
   position: fixed;
-  top: 10px;
+  top: 25px;
+  padding: 5px 10px;
   z-index: 200;
   height: 15%;
 `;
@@ -58,12 +60,14 @@ const IconSort = styled.div`
 const TopTitleWrapper = styled.div`
   h3 {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 28px;
     color: ${(props) => props.theme.mainColor};
   }
-  p {
-    font-size: 1rem;
+  span {
+    font-size: 14px;
     margin-top: 8px;
+    font-weight: 20px;
+    color: ${(props) => props.theme.gray600};
   }
   flex: 2;
   display: flex;
@@ -73,21 +77,20 @@ const TopTitleWrapper = styled.div`
 
 // 하단 카페리스트 영역
 const CafeCardListWrapper = styled.div`
-  /* height: 20%; */
   position: absolute;
   bottom: 0;
-  padding: 20px 25px;
+  padding: 15px 15px;
   display: flex;
   flex-wrap: nowrap;
   overflow-x: scroll;
   z-index: 200;
-  background: transparent !important;
+  height: 154px;
 `;
 
 const CafeCardWrpper = styled.div`
   margin: 5px;
   flex: 0 0 auto;
-  width: 140px;
+  width: 132px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -97,22 +100,25 @@ const CafeCardWrpper = styled.div`
 `;
 
 const CafeCardTop = styled.div`
-  flex: 0.4;
+  /* flex: 0.4; */
   border-radius: 20px 20px 0px 0px;
   display: flex;
-  padding: 8px;
+  padding: 15px 13px;
   align-items: center;
   justify-content: space-between;
 `;
 
 const CafeCardName = styled.div`
-  flex: 1.2;
+  flex: 0.5;
   display: flex;
   padding: 0px 10px;
   align-items: center;
+  font-size: 14px;
+  color: ${(props) => props.theme.gray800};
+  margin-bottom: 10px;
 `;
 const CafeCardImg = styled.div`
-  flex: 1.8;
+  /* flex: 1.8; */
   border-radius: 0px 0px 20px 20px;
   overflow: hidden;
 `;
@@ -124,10 +130,17 @@ const Img = styled.img`
 const Icon = styled.img``;
 
 const CafeTag = styled.div`
-  background-color: blueviolet;
-  border-radius: 15px;
-  padding: 5px 15px;
-  font-size: 13px;
+  background-color: #ffb076;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 12px;
+  /* padding: 5px 15px; */
+  font-size: 9px;
+  /* width: 40px; */
+  height: 15px;
+  font-weight: 3px;
   color: white;
 `;
 
@@ -169,7 +182,7 @@ function Home() {
   return (
     // <Wrapper>
     <>
-      <Top className="cardList">
+      <Top>
         <TopWrapper>
           <Toolbar>
             <IconCoffe>
@@ -181,7 +194,7 @@ function Home() {
           </Toolbar>
           <TopTitleWrapper>
             <h3>마중</h3>
-            <p>따뜻한 오후, 커피 한 잔 어떠세요?</p>
+            <span>따뜻한 오후, 커피 한 잔 어떠세요?</span>
           </TopTitleWrapper>
         </TopWrapper>
       </Top>
@@ -191,7 +204,7 @@ function Home() {
           <CafeCardWrpper>
             <CafeCardTop>
               <CafeTag>친절한</CafeTag>
-              <div>하틍</div>
+              <Icon src={`${process.env.PUBLIC_URL}/icon/heart/unabled.svg`} />
             </CafeCardTop>
 
             <CafeCardName>카페 우드진</CafeCardName>
