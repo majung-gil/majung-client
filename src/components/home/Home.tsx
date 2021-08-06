@@ -13,7 +13,7 @@ const CafeCardListWrapper = styled.div`
   flex-wrap: nowrap;
   overflow-x: scroll;
   z-index: 200;
-  height: 154px;
+  /* height: 154px; */
 `;
 
 const testArr = [1, 2, 3, 4, 5, 6];
@@ -46,7 +46,7 @@ function Home() {
         map,
         icon: {
           url: `${process.env.PUBLIC_URL}/img/cafe_pin.svg`,
-          size: new window.naver.maps.Size(50, 52),
+          size: new window.naver.maps.Size(40, 42),
           origin: new window.naver.maps.Point(0, 0),
           anchor: new window.naver.maps.Point(25, 26),
         },
@@ -60,7 +60,7 @@ function Home() {
     <>
       <TopHome />
       <div id="map" style={{ width: '100%', height: '100%', zIndex: 2, overflow: 'hidden' }} />
-      <CafeCardListWrapper className="cardList">
+      <CafeCardListWrapper className="Wrapperwidth">
         {testArr.map((item, index) => (
           <CafeItem />
         ))}

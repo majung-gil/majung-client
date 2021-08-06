@@ -1,3 +1,4 @@
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { Img } from './Common';
 
@@ -5,6 +6,7 @@ const CafeCardWrpper = styled.div`
   margin: 5px;
   flex: 0 0 auto;
   width: 132px;
+  height: 154px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -61,8 +63,10 @@ declare global {
 }
 
 function CafeItem() {
+  const history = useHistory();
+
   return (
-    <CafeCardWrpper>
+    <CafeCardWrpper onClick={() => history.push('/cafe')}>
       <CafeCardTop>
         <CafeTag>친절한</CafeTag>
         <Icon src={`${process.env.PUBLIC_URL}/icon/heart/unabled.svg`} />

@@ -10,4 +10,5 @@ export const ImgChracter = styled.img`
   position: absolute;
   right: 0;
   bottom: 0;
+  margin-top: 15px;
 `;

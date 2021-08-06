@@ -13,6 +13,8 @@ const GlobalStyle = createGlobalStyle`
     body * {
         z-index: 1;
         /* background-color: #fff; */
+
+        box-sizing: border-box;
         margin: 0;
         padding: 0;
         color: #27282a;
@@ -75,8 +77,8 @@ const GlobalStyle = createGlobalStyle`
         /* background: #f6f6f6 !important; //html배경색상은 고정 */
         }
 
-        .cardList{
-            width: 450px;
+        .Wrapperwidth{
+            width: 100%;
         }
         .top{
             width: 430px;
@@ -101,8 +103,9 @@ const GlobalStyle = createGlobalStyle`
             // border:1px solid #efefef;
         }
         }
-        .cardList{
-            width: 350px;
+        .Wrapperwidth{
+            width: 100%;
+            /* display: block; */
         }
         .top{
             width: 380px;
