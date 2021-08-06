@@ -20,7 +20,7 @@ const testArr = [1, 2, 3, 4, 5, 6];
 
 declare global {
   interface Window {
-    kakao: any;
+    naver: any;
   }
 }
 
@@ -34,29 +34,25 @@ function Home() {
       { x: 37.55873036659889, y: 126.8271994025298 },
     ];
 
-    const container = document.getElementById('map');
-    const options = {
-      center: new window.kakao.maps.LatLng(37.56019115294959, 126.83112338892903),
-      level: 3,
+    const mapOptions = {
+      center: new window.naver.maps.LatLng(37.56019115294959, 126.83112338892903),
+      zoom: 16,
     };
 
-    const imageSrc = `${process.env.PUBLIC_URL}/img/cafe_pin.svg`; // 마커이미지의 주소입니다
-    const imageSize = new window.kakao.maps.Size(50, 54); // 마커이미지의 크기입니다
-    const imageOption = { offset: new window.kakao.maps.Point(27, 54) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-
-    const markerImage = new window.kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
-    const map = new window.kakao.maps.Map(container, options);
-
+    const map = new window.naver.maps.Map('map', mapOptions);
     location.forEach((item) => {
-      const markerPosition = new window.kakao.maps.LatLng(item.x, item.y);
-
+      const markerOptions = {
+        position: new window.naver.maps.LatLng(item.x, item.y),
+        map,
+        icon: {
+          url: `${process.env.PUBLIC_URL}/img/cafe_pin.svg`,
+          size: new window.naver.maps.Size(50, 52),
+          origin: new window.naver.maps.Point(0, 0),
+          anchor: new window.naver.maps.Point(25, 26),
+        },
+      };
       // 마커를 생성합니다
-      const marker = new window.kakao.maps.Marker({
-        position: markerPosition,
-        image: markerImage, // 마커이미지 설정
-      });
-
-      marker.setMap(map);
+      const marker = new window.naver.maps.Marker(markerOptions);
     });
   }, []);
 
