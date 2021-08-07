@@ -7,8 +7,8 @@ const TopWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  height: 100px;
-  padding: 15px 25px;
+  height: 120px;
+  padding: 15px 20px;
   border-radius: 16px;
   background: #fbfbfb;
   border: 1px solid rgba(241, 243, 245, 0.4);
@@ -17,22 +17,21 @@ const TopWrapper = styled.div`
 `;
 
 const Top = styled.div`
-  width: 95%;
+  /* width: 95%; */
   display: flex;
   align-items: center;
   justify-content: center;
   position: fixed;
-  top: 25px;
-  padding: 5px 10px;
+  top: 20px;
+  padding: 15px 10px;
   z-index: 200;
-  height: 15%;
+  height: 20%;
 `;
 
 // 상단 툴바
 const Toolbar = styled.div`
   flex: 1;
   display: flex;
-  /* width: 100%; */
   margin-left: auto;
   justify-content: center;
   align-items: center;
@@ -69,7 +68,7 @@ const Icon = styled.img``;
 
 function TopHome() {
   return (
-    <Top className="cardList">
+    <Top className="Wrapperwidth">
       <TopWrapper>
         <Toolbar>
           <IconCoffe>

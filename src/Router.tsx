@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Cafe from './components/cafe/Cafe';
 import Home from './components/home/Home';
 import Interview from './components/interview/Interview';
 import Search from './components/search/Search';
@@ -9,6 +10,7 @@ function Router() {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/cafe" component={Cafe} />
         <Route exact path="/search" component={Search} />
         <Route exact path="/interview" component={Interview} />
         <Route exact path="*" component={Home} />
