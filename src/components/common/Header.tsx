@@ -1,6 +1,5 @@
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import { Img } from './Common';
 
 const Wrapper = styled.div`
   background-color: ${(props) => props.theme.white};
@@ -30,9 +29,14 @@ const Icon = styled.img`
 `;
 
 function Header() {
+  const history = useHistory();
   return (
     <Wrapper>
-      <Left>
+      <Left
+        onClick={() => {
+          history.goBack();
+        }}
+      >
         <Icon src={`${process.env.PUBLIC_URL}/icon/back.svg`} />
       </Left>
       <Right>

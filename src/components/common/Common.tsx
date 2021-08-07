@@ -12,3 +12,11 @@ export const ImgChracter = styled.img`
   bottom: 0;
   margin-top: 15px;
 `;
+
+export const ImgCafe = styled.img`
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  flex: none;
+  margin: 5px;
+`;
