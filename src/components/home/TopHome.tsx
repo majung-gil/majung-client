@@ -40,6 +40,10 @@ const Toolbar = styled.div`
 const IconCoffe = styled.div`
   margin-left: auto;
 `;
+
+const IconHeart = styled.div`
+  margin-right: 5px;
+`;
 const IconSort = styled.div`
   margin-left: 5px;
 `;
@@ -74,6 +78,9 @@ function TopHome() {
     <Top className="Wrapperwidth">
       <TopWrapper>
         <Toolbar>
+          <IconHeart>
+            <Icon src={`${process.env.PUBLIC_URL}/icon/heart.svg`} onClick={() => history.push('/favorite')} />
+          </IconHeart>
           <IconCoffe>
             <Icon
               alt="today_img"
