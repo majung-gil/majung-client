@@ -47,7 +47,7 @@ const CafeTag = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 3px 12px;
+  padding: 8px 12px;
   /* padding: 5px 15px; */
   font-size: 9px;
   /* width: 40px; */

@@ -8,6 +8,7 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 10px;
+  border-bottom: 1px solid #f1f3f5;
 `;
 
 const Left = styled.div`
