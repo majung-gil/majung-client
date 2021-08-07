@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { ImgChracter } from '../common/Common';
+import SideMenu from '../sidemenu/Sidemenu';
 
 // 마중 상단 영역
 const TopWrapper = styled.div`
@@ -74,31 +76,44 @@ const Icon = styled.img``;
 function TopHome() {
   const history = useHistory();
 
+  const [modalState, setModalState] = useState(false);
+  const openModal = () => {
+    setModalState(true);
+  };
+
+  const closeModal = (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+    setModalState(false);
+  };
+
   return (
-    <Top className="Wrapperwidth">
-      <TopWrapper>
-        <Toolbar>
-          <IconHeart>
-            <Icon src={`${process.env.PUBLIC_URL}/icon/heart.svg`} onClick={() => history.push('/favorite')} />
-          </IconHeart>
-          <IconCoffe>
-            <Icon
-              alt="today_img"
-              src={`${process.env.PUBLIC_URL}/icon/search.svg`}
-              onClick={() => history.push('/search')}
-            />
-          </IconCoffe>
-          <IconSort>
-            <Icon alt="today_img" src={`${process.env.PUBLIC_URL}/icon/sidemenu.svg`} />
-          </IconSort>
-        </Toolbar>
-        <TopTitleWrapper>
-          <h3>마중</h3>
-          <span>따뜻한 오후, 커피 한 잔 어떠세요?</span>
-          <ImgChracter src={`${process.env.PUBLIC_URL}/img/c_majung.svg`} />
-        </TopTitleWrapper>
-      </TopWrapper>
-    </Top>
+    <>
+      <SideMenu data="" state={modalState} closeModal={closeModal} />
+      <Top className="Wrapperwidth">
+        <TopWrapper>
+          <Toolbar>
+            <IconHeart>
+              <Icon src={`${process.env.PUBLIC_URL}/icon/heart.svg`} onClick={() => history.push('/favorite')} />
+            </IconHeart>
+            <IconCoffe>
+              <Icon
+                alt="today_img"
+                src={`${process.env.PUBLIC_URL}/icon/search.svg`}
+                onClick={() => history.push('/search')}
+              />
+            </IconCoffe>
+            <IconSort>
+              <Icon onClick={openModal} src={`${process.env.PUBLIC_URL}/icon/sidemenu.svg`} />
+            </IconSort>
+          </Toolbar>
+          <TopTitleWrapper>
+            <h3>마중</h3>
+            <span>따뜻한 오후, 커피 한 잔 어떠세요?</span>
+            <ImgChracter src={`${process.env.PUBLIC_URL}/img/c_majung.svg`} />
+          </TopTitleWrapper>
+        </TopWrapper>
+      </Top>
+    </>
   );
 }
 
