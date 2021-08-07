@@ -1,3 +1,4 @@
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { ImgChracter } from '../common/Common';
 
@@ -67,12 +68,18 @@ const TopTitleWrapper = styled.div`
 const Icon = styled.img``;
 
 function TopHome() {
+  const history = useHistory();
+
   return (
     <Top className="Wrapperwidth">
       <TopWrapper>
         <Toolbar>
           <IconCoffe>
-            <Icon alt="today_img" src={`${process.env.PUBLIC_URL}/icon/search.svg`} />
+            <Icon
+              alt="today_img"
+              src={`${process.env.PUBLIC_URL}/icon/search.svg`}
+              onClick={() => history.push('/search')}
+            />
           </IconCoffe>
           <IconSort>
             <Icon alt="today_img" src={`${process.env.PUBLIC_URL}/icon/sidemenu.svg`} />

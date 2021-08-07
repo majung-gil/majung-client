@@ -13,6 +13,12 @@ export const ImgChracter = styled.img`
   margin-top: 15px;
 `;
 
+export const ImgBannerChracter = styled.img`
+  width: 55px;
+  margin-right: 5px;
+  /* margin-top: 15px; */
+`;
+
 export const ImgCafe = styled.img`
   width: 80px;
   height: 80px;
