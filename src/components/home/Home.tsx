@@ -1,6 +1,9 @@
 /* eslint import/newline-after-import: "off" */
+import { useQuery } from '@apollo/client';
 import { useEffect } from 'react';
 import styled from 'styled-components';
+import { SELECT_CAFE_LIST } from '../../apollo/query';
+import useCafeList from '../../apollo/use';
 import CafeItem from '../common/CafeItem';
 import TopHome from './TopHome';
 
@@ -25,6 +28,9 @@ declare global {
 }
 
 function Home() {
+  const { loading, error, data } = useQuery(SELECT_CAFE_LIST);
+  const CafeList = data?.select_cafe_list.rows;
+  console.log(CafeList);
   useEffect(() => {
     const location = [
       { x: 37.560616811298324, y: 126.83266169049234 },
@@ -61,8 +67,8 @@ function Home() {
       <TopHome />
       <div id="map" style={{ width: '100%', height: '100%', zIndex: 2, overflow: 'hidden' }} />
       <CafeCardListWrapper className="Wrapperwidth">
-        {testArr.map((item, index) => (
-          <CafeItem />
+        {CafeList.map((item: any) => (
+          <CafeItem item={item} />
         ))}
       </CafeCardListWrapper>
     </>

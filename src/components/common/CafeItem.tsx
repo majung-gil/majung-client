@@ -61,9 +61,32 @@ declare global {
     kakao: any;
   }
 }
+interface IProps {
+  item?: {
+    cafe_idx: number;
+    cafe_name: string;
+    cafe_phone: string;
+    cafe_address: string;
+    cafe_lat: number;
+    cafe_lng: number;
+    category: string;
+    is_parking: boolean;
+    is_delivery: boolean;
+    is_eat: boolean;
+    is_visit: boolean;
+    cafe_open_time: string;
+    cafe_close_time: string;
+    cafe_img: {
+      cafe_idx: number;
+      cafe_img_idx: number;
+      cafe_img_url: string;
+    };
+  };
+}
 
-function CafeItem() {
+function CafeItem({ item }: IProps) {
   const history = useHistory();
+  console.log(item);
 
   return (
     <CafeCardWrpper onClick={() => history.push('/cafe')}>
@@ -72,7 +95,7 @@ function CafeItem() {
         <Icon src={`${process.env.PUBLIC_URL}/icon/heart/unabled.svg`} />
       </CafeCardTop>
 
-      <CafeCardName>카페 우드진</CafeCardName>
+      <CafeCardName>{item?.cafe_name}</CafeCardName>
 
       <CafeCardImg>
         <Img alt="write_icon" src="https://www.thinkfood.co.kr/news/photo/202007/88177_114044_267.jpg" />
