@@ -29,3 +29,21 @@ export const SELECT_CAFE_LIST = gql`
     }
   }
 `;
+
+export const SELECT_CAFE_ONE = gql`
+  query select_cafe($cafe_idx: Float!) {
+    select_cafe(cafe_idx: $cafe_idx) {
+      cafe_idx
+      cafe_name
+      cafe_phone
+      cafe_address
+      cafe_lat
+      cafe_lng
+      cafe_lat
+      cafe_img {
+        cafe_img_idx
+        cafe_img_url
+      }
+    }
+  }
+`;

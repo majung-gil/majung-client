@@ -1,8 +1,12 @@
 import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import Header from '../common/Header';
 import CafeModal from './CafeModal';
 
 function Cafe() {
+  const params: any = useParams();
+  console.log(params);
+
   useEffect(() => {
     const location = [{ x: 37.560616811298324, y: 126.83266169049234 }];
 
