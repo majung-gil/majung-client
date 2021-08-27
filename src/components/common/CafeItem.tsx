@@ -42,12 +42,12 @@ const CafeCardImg = styled.div`
 const Icon = styled.img``;
 
 const CafeTag = styled.div`
-  background-color: #ffb076;
+  background-color: ${(props) => props.color};
   border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 12px;
+  padding: 10px 12px;
   /* padding: 5px 15px; */
   font-size: 9px;
   /* width: 40px; */
@@ -62,7 +62,7 @@ declare global {
   }
 }
 interface IProps {
-  item?: {
+  cafe?: {
     cafe_idx: number;
     cafe_name: string;
     cafe_phone: string;
@@ -81,21 +81,25 @@ interface IProps {
       cafe_img_idx: number;
       cafe_img_url: string;
     };
+    rep_category: {
+      category_color: string;
+    };
   };
 }
 
-function CafeItem({ item }: IProps) {
+function CafeItem({ cafe }: IProps) {
   const history = useHistory();
-  console.log(item);
+  const temp: any = cafe?.category.split(',');
+  const category = temp[0];
 
   return (
     <CafeCardWrpper onClick={() => history.push('/cafe')}>
       <CafeCardTop>
-        <CafeTag>친절한</CafeTag>
+        <CafeTag color={cafe?.rep_category.category_color}>{category}</CafeTag>
         <Icon src={`${process.env.PUBLIC_URL}/icon/heart/unabled.svg`} />
       </CafeCardTop>
 
-      <CafeCardName>{item?.cafe_name}</CafeCardName>
+      <CafeCardName>{cafe?.cafe_name}</CafeCardName>
 
       <CafeCardImg>
         <Img alt="write_icon" src="https://www.thinkfood.co.kr/news/photo/202007/88177_114044_267.jpg" />

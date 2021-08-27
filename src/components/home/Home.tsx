@@ -67,9 +67,7 @@ function Home() {
       <TopHome />
       <div id="map" style={{ width: '100%', height: '100%', zIndex: 2, overflow: 'hidden' }} />
       <CafeCardListWrapper className="Wrapperwidth">
-        {CafeList.map((item: any) => (
-          <CafeItem item={item} />
-        ))}
+        {CafeList && CafeList.map((cafe: any) => <CafeItem cafe={cafe} />)}
       </CafeCardListWrapper>
     </>
   );
