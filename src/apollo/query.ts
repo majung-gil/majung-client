@@ -22,6 +22,9 @@ export const SELECT_CAFE_LIST = gql`
           cafe_img_idx
           cafe_img_url
         }
+        rep_category {
+          category_color
+        }
       }
     }
   }
