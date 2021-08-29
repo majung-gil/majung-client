@@ -44,6 +44,11 @@ export const SELECT_CAFE_ONE = gql`
         cafe_img_idx
         cafe_img_url
       }
+      cafe_open_time
+      cafe_close_time
+      is_delivery
+      is_eat
+      is_parking
     }
   }
 `;

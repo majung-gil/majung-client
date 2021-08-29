@@ -1,4 +1,6 @@
+import { useQuery } from 'react-apollo';
 import styled from 'styled-components';
+import { SELECT_CAFE_LIST } from '../../apollo/query';
 import CafeItem from '../common/CafeItem';
 import SearchBanner from './SearchBanner';
 import SearchHeader from './SearchHeader';

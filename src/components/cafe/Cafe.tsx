@@ -1,12 +1,17 @@
+/* eslint import/newline-after-import: "off" */
+import { useQuery } from '@apollo/client';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { SELECT_CAFE_LIST, SELECT_CAFE_ONE } from '../../apollo/query';
 import Header from '../common/Header';
 import CafeModal from './CafeModal';
 
 function Cafe() {
   const params: any = useParams();
-  console.log(params);
-
+  const { loading, error, data } = useQuery(SELECT_CAFE_ONE, {
+    variables: { cafe_idx: Number(params.cafe_idx) },
+  });
+  const cafe = data?.select_cafe;
   useEffect(() => {
     const location = [{ x: 37.560616811298324, y: 126.83266169049234 }];
 
@@ -31,11 +36,12 @@ function Cafe() {
       const marker = new window.naver.maps.Marker(markerOptions);
     });
   }, []);
+
   return (
     <>
       <Header />
       <div id="map" style={{ width: '100%', height: '50%', zIndex: 2, overflow: 'hidden' }} />
-      <CafeModal />
+      {cafe ? <CafeModal cafe={cafe} /> : null}
     </>
   );
 }

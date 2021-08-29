@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { IProps } from '../common/CafeItem';
 import { ImgCafe } from '../common/Common';
 
 const ModalWrapper = styled.div`
@@ -65,17 +66,16 @@ const CafeTextWrapper = styled.div`
 
 const testArr = [1, 2, 3, 4, 5, 6];
 const cafeInfo = [
-  { icon: 'review', text: '649개의 방문자 리뷰' },
   { icon: 'parking', text: '주차 가능' },
   { icon: 'delivery', text: '배달 가능' },
-  { icon: 'food', text: '매장 내 식사 가능' },
 ];
 
-function CafeModal() {
+function CafeModal({ cafe }: IProps) {
+  console.log(cafe);
   return (
     <ModalWrapper className="Wrapperwidth">
       <TitleWrapper>
-        <span>카페 우드진</span>
+        <span>{cafe?.cafe_name}</span>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <Icon src={`${process.env.PUBLIC_URL}/icon/heart/enabled.svg`} />
           <Icon src={`${process.env.PUBLIC_URL}/icon/cancel.svg`} />
@@ -83,7 +83,7 @@ function CafeModal() {
       </TitleWrapper>
       <Address>
         <Icon src={`${process.env.PUBLIC_URL}/icon/map.svg`} />
-        서울 강서구 마곡중앙6로 45 리더스퀘어 1층 113...
+        {cafe?.cafe_address}
       </Address>
 
       <CafeImgList>
@@ -93,12 +93,24 @@ function CafeModal() {
       </CafeImgList>
 
       <CafeInfo>
-        {cafeInfo.map((item, index) => (
-          <CafeTextWrapper>
-            <Icon src={`${process.env.PUBLIC_URL}/icon/${item.icon}.svg`} />
-            <span>{item.text}</span>
-          </CafeTextWrapper>
-        ))}
+        <CafeTextWrapper>
+          <Icon src={`${process.env.PUBLIC_URL}/icon/delivery.svg`} />
+          <span>{cafe?.cafe_phone}</span>
+        </CafeTextWrapper>
+        <CafeTextWrapper>
+          <Icon src={`${process.env.PUBLIC_URL}/icon/delivery.svg`} />
+          <span>
+            {cafe?.cafe_open_time ? cafe?.cafe_open_time + ' ~ ' + cafe?.cafe_close_time : '영업시간 정보없음'}
+          </span>
+        </CafeTextWrapper>
+        <CafeTextWrapper>
+          <Icon src={`${process.env.PUBLIC_URL}/icon/parking.svg`} />
+          <span>{cafe?.is_parking ? '주차 가능' : '주차 불가능'}</span>
+        </CafeTextWrapper>
+        <CafeTextWrapper>
+          <Icon src={`${process.env.PUBLIC_URL}/icon/delivery.svg`} />
+          <span>{cafe?.is_delivery ? '배달 가능' : '배달 불가능'}</span>
+        </CafeTextWrapper>
       </CafeInfo>
 
       <InterviewButton>

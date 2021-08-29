@@ -61,7 +61,7 @@ declare global {
     kakao: any;
   }
 }
-interface IProps {
+export interface IProps {
   cafe?: {
     cafe_idx: number;
     cafe_name: string;
