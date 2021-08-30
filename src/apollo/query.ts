@@ -49,6 +49,22 @@ export const SELECT_CAFE_ONE = gql`
       is_delivery
       is_eat
       is_parking
+      category
+      rep_category {
+        category_color
+      }
+    }
+  }
+`;
+
+export const SELECT_CATEGORY_LIST = gql`
+  query select_category_list {
+    select_category_list {
+      rows {
+        category_idx
+        category_name
+        category_color
+      }
     }
   }
 `;

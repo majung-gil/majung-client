@@ -1,9 +1,11 @@
+import { useQuery } from '@apollo/client';
 import styled from 'styled-components';
+import { SELECT_CATEGORY_LIST } from '../../apollo/query';
 import { IProps } from '../common/CafeItem';
 import { ImgCafe } from '../common/Common';
 
 const ModalWrapper = styled.div`
-  height: 50%;
+  height: 55%;
   background-color: ${(props) => props.theme.white};
   border-radius: 16px 16px 0px 0px;
   position: absolute;
@@ -20,6 +22,10 @@ const TitleWrapper = styled.div`
 `;
 const Icon = styled.img`
   /* width: 35px; */
+`;
+
+const CafeTagWrapper = styled.div`
+  display: flex;
 `;
 
 const Address = styled.div`
@@ -56,6 +62,8 @@ const CafeImgList = styled.div`
 const CafeInfo = styled.div`
   display: flex;
   flex-direction: column;
+  max-height: 140px;
+  overflow-y: scroll;
 `;
 const CafeTextWrapper = styled.div`
   display: flex;
@@ -64,14 +72,38 @@ const CafeTextWrapper = styled.div`
   margin-top: 12px;
 `;
 
-const testArr = [1, 2, 3, 4, 5, 6];
-const cafeInfo = [
-  { icon: 'parking', text: '주차 가능' },
-  { icon: 'delivery', text: '배달 가능' },
-];
+const CafeTag = styled.div`
+  background-color: ${(props) => props.color};
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;
+  font-size: 9px;
+  height: 15px;
+  font-weight: 3px;
+  color: white;
+  margin-right: 5px;
+`;
 
+const testArr = [1, 2, 3, 4, 5, 6];
 function CafeModal({ cafe }: IProps) {
-  console.log(cafe);
+  const category: any = cafe?.category.split(',');
+  category?.pop(); // 마지막 배열은 빼준다
+
+  const { data } = useQuery(SELECT_CATEGORY_LIST);
+  const category_list = data?.select_category_list.rows;
+
+  let _category = [];
+  for (let category_name of category) {
+    const temp = category_list?.find((_: any) => _.category_name == category_name);
+    const item = {
+      category_name: temp.category_name,
+      category_color: temp.category_color,
+    };
+    _category.push(item);
+  }
+
   return (
     <ModalWrapper className="Wrapperwidth">
       <TitleWrapper>
@@ -81,6 +113,12 @@ function CafeModal({ cafe }: IProps) {
           <Icon src={`${process.env.PUBLIC_URL}/icon/cancel.svg`} />
         </div>
       </TitleWrapper>
+      <CafeTagWrapper>
+        {_category?.map((item: any, index: any) => (
+          <CafeTag color={item.category_color}>{item.category_name}</CafeTag>
+        ))}
+      </CafeTagWrapper>
+
       <Address>
         <Icon src={`${process.env.PUBLIC_URL}/icon/map.svg`} />
         {cafe?.cafe_address}

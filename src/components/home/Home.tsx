@@ -28,7 +28,7 @@ declare global {
 }
 
 function Home() {
-  const { loading, error, data } = useQuery(SELECT_CAFE_LIST);
+  const { data } = useQuery(SELECT_CAFE_LIST);
   const CafeList = data?.select_cafe_list.rows;
   console.log(CafeList);
   useEffect(() => {
