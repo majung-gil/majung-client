@@ -11,7 +11,7 @@ function Router() {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/cafe" component={Cafe} />
+        <Route exact path="/cafe/:cafe_idx" component={Cafe} />
         <Route exact path="/search" component={Search} />
         <Route exact path="/favorite" component={Favorite} />
         <Route exact path="/interview" component={Interview} />

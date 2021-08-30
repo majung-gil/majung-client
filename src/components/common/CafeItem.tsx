@@ -61,7 +61,7 @@ declare global {
     kakao: any;
   }
 }
-interface IProps {
+export interface IProps {
   cafe?: {
     cafe_idx: number;
     cafe_name: string;
@@ -76,6 +76,7 @@ interface IProps {
     is_visit: boolean;
     cafe_open_time: string;
     cafe_close_time: string;
+    cafe_insta: string;
     cafe_img: {
       cafe_idx: number;
       cafe_img_idx: number;
@@ -93,7 +94,7 @@ function CafeItem({ cafe }: IProps) {
   const category = temp[0];
 
   return (
-    <CafeCardWrpper onClick={() => history.push('/cafe')}>
+    <CafeCardWrpper onClick={() => history.push(`/cafe/${cafe?.cafe_idx}`)}>
       <CafeCardTop>
         <CafeTag color={cafe?.rep_category.category_color}>{category}</CafeTag>
         <Icon src={`${process.env.PUBLIC_URL}/icon/heart/unabled.svg`} />

@@ -1,8 +1,11 @@
+import { useQuery } from '@apollo/client';
 import styled from 'styled-components';
+import { SELECT_CATEGORY_LIST } from '../../apollo/query';
+import { IProps } from '../common/CafeItem';
 import { ImgCafe } from '../common/Common';
 
 const ModalWrapper = styled.div`
-  height: 50%;
+  height: 55%;
   background-color: ${(props) => props.theme.white};
   border-radius: 16px 16px 0px 0px;
   position: absolute;
@@ -16,9 +19,22 @@ const TitleWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      margin-bottom: 3px;
+      margin-left: 3px;
+    }
+  }
 `;
 const Icon = styled.img`
   /* width: 35px; */
+`;
+
+const CafeTagWrapper = styled.div`
+  display: flex;
 `;
 
 const Address = styled.div`
@@ -55,6 +71,8 @@ const CafeImgList = styled.div`
 const CafeInfo = styled.div`
   display: flex;
   flex-direction: column;
+  max-height: 140px;
+  overflow-y: scroll;
 `;
 const CafeTextWrapper = styled.div`
   display: flex;
@@ -63,27 +81,65 @@ const CafeTextWrapper = styled.div`
   margin-top: 12px;
 `;
 
-const testArr = [1, 2, 3, 4, 5, 6];
-const cafeInfo = [
-  { icon: 'review', text: '649개의 방문자 리뷰' },
-  { icon: 'parking', text: '주차 가능' },
-  { icon: 'delivery', text: '배달 가능' },
-  { icon: 'food', text: '매장 내 식사 가능' },
-];
+const CafeTag = styled.div`
+  background-color: ${(props) => props.color};
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;
+  font-size: 9px;
+  height: 15px;
+  font-weight: 3px;
+  color: white;
+  margin-right: 5px;
+`;
 
-function CafeModal() {
+const testArr = [1, 2, 3, 4, 5, 6];
+function CafeModal({ cafe }: IProps) {
+  const category: any = cafe?.category.split(',');
+  category?.pop(); // 마지막 배열은 빼준다
+
+  const { data } = useQuery(SELECT_CATEGORY_LIST);
+  const category_list = data?.select_category_list.rows;
+
+  let _category = [];
+  for (let category_name of category) {
+    const temp = category_list?.find((_: any) => _.category_name == category_name);
+    const item = {
+      category_name: temp?.category_name,
+      category_color: temp?.category_color,
+    };
+    _category.push(item);
+  }
+
   return (
     <ModalWrapper className="Wrapperwidth">
       <TitleWrapper>
-        <span>카페 우드진</span>
+        <span>
+          {cafe?.cafe_name}{' '}
+          {cafe?.cafe_insta ? (
+            <Icon
+              src={`${process.env.PUBLIC_URL}/icon/insta_logo.svg`}
+              onClick={() => window.open(`https://www.instagram.com/${cafe?.cafe_insta}/`)}
+            />
+          ) : null}
+        </span>
+
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <Icon src={`${process.env.PUBLIC_URL}/icon/heart/enabled.svg`} />
           <Icon src={`${process.env.PUBLIC_URL}/icon/cancel.svg`} />
         </div>
       </TitleWrapper>
+      <CafeTagWrapper>
+        {_category?.map((item: any, index: any) => (
+          <CafeTag color={item.category_color}>{item.category_name}</CafeTag>
+        ))}
+      </CafeTagWrapper>
+
       <Address>
         <Icon src={`${process.env.PUBLIC_URL}/icon/map.svg`} />
-        서울 강서구 마곡중앙6로 45 리더스퀘어 1층 113...
+        {cafe?.cafe_address}
       </Address>
 
       <CafeImgList>
@@ -93,12 +149,24 @@ function CafeModal() {
       </CafeImgList>
 
       <CafeInfo>
-        {cafeInfo.map((item, index) => (
-          <CafeTextWrapper>
-            <Icon src={`${process.env.PUBLIC_URL}/icon/${item.icon}.svg`} />
-            <span>{item.text}</span>
-          </CafeTextWrapper>
-        ))}
+        <CafeTextWrapper>
+          <Icon src={`${process.env.PUBLIC_URL}/icon/call.svg`} />
+          <span>{cafe?.cafe_phone}</span>
+        </CafeTextWrapper>
+        <CafeTextWrapper>
+          <Icon src={`${process.env.PUBLIC_URL}/icon/time.svg`} />
+          <span>
+            {cafe?.cafe_open_time ? cafe?.cafe_open_time + ' ~ ' + cafe?.cafe_close_time : '영업시간 정보없음'}
+          </span>
+        </CafeTextWrapper>
+        <CafeTextWrapper>
+          <Icon src={`${process.env.PUBLIC_URL}/icon/parking.svg`} />
+          <span>{cafe?.is_parking ? '주차 가능' : '주차 불가능'}</span>
+        </CafeTextWrapper>
+        <CafeTextWrapper>
+          <Icon src={`${process.env.PUBLIC_URL}/icon/delivery.svg`} />
+          <span>{cafe?.is_delivery ? '배달 가능' : '배달 불가능'}</span>
+        </CafeTextWrapper>
       </CafeInfo>
 
       <InterviewButton>
