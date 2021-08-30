@@ -94,11 +94,11 @@ function CafeModal({ cafe }: IProps) {
 
       <CafeInfo>
         <CafeTextWrapper>
-          <Icon src={`${process.env.PUBLIC_URL}/icon/delivery.svg`} />
+          <Icon src={`${process.env.PUBLIC_URL}/icon/call.svg`} />
           <span>{cafe?.cafe_phone}</span>
         </CafeTextWrapper>
         <CafeTextWrapper>
-          <Icon src={`${process.env.PUBLIC_URL}/icon/delivery.svg`} />
+          <Icon src={`${process.env.PUBLIC_URL}/icon/time.svg`} />
           <span>
             {cafe?.cafe_open_time ? cafe?.cafe_open_time + ' ~ ' + cafe?.cafe_close_time : '영업시간 정보없음'}
           </span>
