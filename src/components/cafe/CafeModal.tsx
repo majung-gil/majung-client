@@ -19,6 +19,15 @@ const TitleWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      margin-bottom: 3px;
+      margin-left: 3px;
+    }
+  }
 `;
 const Icon = styled.img`
   /* width: 35px; */
@@ -98,8 +107,8 @@ function CafeModal({ cafe }: IProps) {
   for (let category_name of category) {
     const temp = category_list?.find((_: any) => _.category_name == category_name);
     const item = {
-      category_name: temp.category_name,
-      category_color: temp.category_color,
+      category_name: temp?.category_name,
+      category_color: temp?.category_color,
     };
     _category.push(item);
   }
@@ -107,7 +116,16 @@ function CafeModal({ cafe }: IProps) {
   return (
     <ModalWrapper className="Wrapperwidth">
       <TitleWrapper>
-        <span>{cafe?.cafe_name}</span>
+        <span>
+          {cafe?.cafe_name}{' '}
+          {cafe?.cafe_insta ? (
+            <Icon
+              src={`${process.env.PUBLIC_URL}/icon/insta_logo.svg`}
+              onClick={() => window.open(`https://www.instagram.com/${cafe?.cafe_insta}/`)}
+            />
+          ) : null}
+        </span>
+
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <Icon src={`${process.env.PUBLIC_URL}/icon/heart/enabled.svg`} />
           <Icon src={`${process.env.PUBLIC_URL}/icon/cancel.svg`} />

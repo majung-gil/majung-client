@@ -76,6 +76,7 @@ export interface IProps {
     is_visit: boolean;
     cafe_open_time: string;
     cafe_close_time: string;
+    cafe_insta: string;
     cafe_img: {
       cafe_idx: number;
       cafe_img_idx: number;

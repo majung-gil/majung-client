@@ -50,6 +50,8 @@ export const SELECT_CAFE_ONE = gql`
       is_eat
       is_parking
       category
+
+      cafe_insta
       rep_category {
         category_color
       }
