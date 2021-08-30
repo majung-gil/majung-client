@@ -1,4 +1,4 @@
-import { useQuery } from 'react-apollo';
+import { useQuery } from '@apollo/client';
 import styled from 'styled-components';
 import { SELECT_CAFE_LIST } from '../../apollo/query';
 import CafeItem from '../common/CafeItem';
@@ -45,6 +45,10 @@ const CafeCardListWrapper = styled.div`
 
 const testArr = [1, 2, 3, 4, 5, 6];
 function Search() {
+  const { data } = useQuery(SELECT_CAFE_LIST);
+  const CafeList = data?.select_cafe_list.rows;
+  console.log(CafeList);
+
   return (
     <>
       <SearchHeader />
@@ -57,9 +61,7 @@ function Search() {
           </Text>
 
           <CafeCardListWrapper className="Wrapperwidth">
-            {testArr.map((item, index) => (
-              <CafeItem />
-            ))}
+            {CafeList && CafeList.map((cafe: any) => <CafeItem cafe={cafe} />)}
           </CafeCardListWrapper>
         </ItemWrapper>
 
@@ -70,9 +72,7 @@ function Search() {
           </Text>
 
           <CafeCardListWrapper className="Wrapperwidth">
-            {testArr.map((item, index) => (
-              <CafeItem />
-            ))}
+            {CafeList && CafeList.map((cafe: any) => <CafeItem cafe={cafe} />)}
           </CafeCardListWrapper>
         </ItemWrapper>
 
@@ -83,9 +83,7 @@ function Search() {
           </Text>
 
           <CafeCardListWrapper className="Wrapperwidth">
-            {testArr.map((item, index) => (
-              <CafeItem />
-            ))}
+            {CafeList && CafeList.map((cafe: any) => <CafeItem cafe={cafe} />)}
           </CafeCardListWrapper>
         </ItemWrapper>
       </SearchWrapper>
