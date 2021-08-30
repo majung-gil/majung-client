@@ -1,6 +1,6 @@
-import { useQuery } from 'react-apollo';
+import { useQuery } from '@apollo/client';
 import styled from 'styled-components';
-import { SELECT_CAFE_LIST } from '../../apollo/query';
+import { SELECT_CAFE_CURATION, SELECT_CAFE_LIST } from '../../apollo/query';
 import CafeItem from '../common/CafeItem';
 import SearchBanner from './SearchBanner';
 import SearchHeader from './SearchHeader';
@@ -43,8 +43,46 @@ const CafeCardListWrapper = styled.div`
   overflow-x: scroll;
 `;
 
-const testArr = [1, 2, 3, 4, 5, 6];
 function Search() {
+  let cafe_item = {
+    cafe_photo: [],
+    cafe_dessert: [],
+    cafe_coffee: [],
+  };
+
+  const cafe_photo = useQuery(SELECT_CAFE_CURATION, {
+    variables: { category_idx: 1 },
+  });
+  const cafe_dessert = useQuery(SELECT_CAFE_CURATION, {
+    variables: { category_idx: 2 },
+  });
+  const cafe_coffee = useQuery(SELECT_CAFE_CURATION, {
+    variables: { category_idx: 4 },
+  });
+  console.log(cafe_photo);
+
+  //...
+  if (cafe_photo.loading) {
+    console.log('Loading list of products');
+  } else {
+    cafe_item.cafe_photo = cafe_photo.data.select_cafe_category.rows;
+  }
+
+  //...
+  if (cafe_dessert.loading) {
+    console.log('Loading list of categories');
+  } else {
+    console.log(cafe_dessert.data.select_cafe_category.rows);
+    cafe_item.cafe_dessert = cafe_dessert.data.select_cafe_category.rows;
+  }
+
+  if (cafe_coffee.loading) {
+    console.log('Loading list of categories');
+  } else {
+    console.log(cafe_coffee.data.select_cafe_category.rows);
+    cafe_item.cafe_coffee = cafe_coffee.data.select_cafe_category.rows;
+  }
+
   return (
     <>
       <SearchHeader />
@@ -52,27 +90,23 @@ function Search() {
         <SearchBanner />
         <ItemWrapper>
           <Text>
-            <span> 💻 노트북 하기 좋아요!</span>
+            <span> ☕️ 커피랑 음료 찐 맛집!</span>
             <Icon src={`${process.env.PUBLIC_URL}/icon/back.svg`} />
           </Text>
 
           <CafeCardListWrapper className="Wrapperwidth">
-            {testArr.map((item, index) => (
-              <CafeItem />
-            ))}
+            {cafe_item && cafe_item?.cafe_coffee.map((cafe: any) => <CafeItem cafe={cafe} />)}
           </CafeCardListWrapper>
         </ItemWrapper>
 
         <ItemWrapper>
           <Text>
-            <span> 💓 분위기 깡패, 카페 추천! </span>
+            <span> 📸 인스타갬성 취저! 사진찍기 좋아요!</span>
             <Icon src={`${process.env.PUBLIC_URL}/icon/back.svg`} />
           </Text>
 
           <CafeCardListWrapper className="Wrapperwidth">
-            {testArr.map((item, index) => (
-              <CafeItem />
-            ))}
+            {cafe_item && cafe_item?.cafe_photo.map((cafe: any) => <CafeItem cafe={cafe} />)}
           </CafeCardListWrapper>
         </ItemWrapper>
 
@@ -83,9 +117,7 @@ function Search() {
           </Text>
 
           <CafeCardListWrapper className="Wrapperwidth">
-            {testArr.map((item, index) => (
-              <CafeItem />
-            ))}
+            {cafe_item && cafe_item?.cafe_dessert.map((cafe: any) => <CafeItem cafe={cafe} />)}
           </CafeCardListWrapper>
         </ItemWrapper>
       </SearchWrapper>
