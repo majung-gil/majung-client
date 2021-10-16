@@ -143,8 +143,8 @@ function CafeModal({ cafe }: IProps) {
       </Address>
 
       <CafeImgList>
-        {testArr.map((item, index) => (
-          <ImgCafe src={`${process.env.PUBLIC_URL}/img/cafe.jpg`} />
+        {cafe?.cafe_img.map((item, index) => (
+          <ImgCafe src={item.cafe_img_url} />
         ))}
       </CafeImgList>
 
