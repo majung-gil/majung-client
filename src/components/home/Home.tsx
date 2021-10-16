@@ -30,7 +30,6 @@ declare global {
 function Home() {
   const { loading, error, data } = useQuery(SELECT_CAFE_LIST);
   const CafeList = data?.select_cafe_list.rows;
-  console.log(CafeList);
   useEffect(() => {
     const location = [
       { x: 37.560616811298324, y: 126.83266169049234 },

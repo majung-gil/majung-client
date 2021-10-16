@@ -1,6 +1,5 @@
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import { Img } from './Common';
 
 const CafeCardWrpper = styled.div`
   margin: 5px;
@@ -56,6 +55,13 @@ const CafeTag = styled.div`
   color: white;
 `;
 
+export const Img = styled.img`
+  width: 100%;
+  position: relative;
+  top: -50px;
+  /* height: 100%; */
+`;
+
 declare global {
   interface Window {
     kakao: any;
@@ -77,11 +83,13 @@ export interface IProps {
     cafe_open_time: string;
     cafe_close_time: string;
     cafe_insta: string;
-    cafe_img: {
-      cafe_idx: number;
-      cafe_img_idx: number;
-      cafe_img_url: string;
-    };
+    cafe_img: [
+      {
+        cafe_idx: number;
+        cafe_img_idx: number;
+        cafe_img_url: string;
+      },
+    ];
     rep_category: {
       category_color: string;
     };
@@ -92,7 +100,7 @@ function CafeItem({ cafe }: IProps) {
   const history = useHistory();
   const temp: any = cafe?.category.split(',');
   const category = temp[0];
-
+  console.log(cafe);
   return (
     <CafeCardWrpper onClick={() => history.push(`/cafe/${cafe?.cafe_idx}`)}>
       <CafeCardTop>
@@ -103,7 +111,7 @@ function CafeItem({ cafe }: IProps) {
       <CafeCardName>{cafe?.cafe_name}</CafeCardName>
 
       <CafeCardImg>
-        <Img alt="write_icon" src="https://www.thinkfood.co.kr/news/photo/202007/88177_114044_267.jpg" />
+        <Img alt="write_icon" src={cafe?.cafe_img[0].cafe_img_url} />
       </CafeCardImg>
     </CafeCardWrpper>
   );
