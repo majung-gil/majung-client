@@ -12,12 +12,13 @@ function Cafe() {
     variables: { cafe_idx: Number(params.cafe_idx) },
   });
   const cafe = data?.select_cafe;
-  useEffect(() => {
-    const location = [{ x: 37.560616811298324, y: 126.83266169049234 }];
+  console.log(cafe);
+  if (cafe && cafe?.cafe_lat) {
+    const location = [{ x: cafe?.cafe_lng, y: cafe?.cafe_lat }];
 
     const mapOptions = {
-      center: new window.naver.maps.LatLng(37.56019115294959, 126.83112338892903),
-      zoom: 16,
+      center: new window.naver.maps.LatLng(cafe?.cafe_lng, cafe?.cafe_lat),
+      zoom: 17,
     };
 
     const map = new window.naver.maps.Map('map', mapOptions);
@@ -35,7 +36,7 @@ function Cafe() {
       // 마커를 생성합니다
       const marker = new window.naver.maps.Marker(markerOptions);
     });
-  }, []);
+  }
 
   return (
     <>

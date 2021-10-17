@@ -30,22 +30,18 @@ declare global {
 function Home() {
   const { loading, error, data } = useQuery(SELECT_CAFE_LIST);
   const CafeList = data?.select_cafe_list.rows;
-  useEffect(() => {
-    const location = [
-      { x: 37.560616811298324, y: 126.83266169049234 },
-      { x: 37.56034206104102, y: 126.82954983751986 },
-      { x: 37.56023090308679, y: 126.83056871492835 },
-      { x: 37.56017915499369, y: 126.83218731166463 },
-      { x: 37.55873036659889, y: 126.8271994025298 },
-    ];
-
+  const loca = CafeList.map((_: any) => ({
+    x: _.cafe_lng,
+    y: _.cafe_lat,
+  }));
+  if (CafeList && loca) {
     const mapOptions = {
       center: new window.naver.maps.LatLng(37.56019115294959, 126.83112338892903),
       zoom: 16,
     };
 
     const map = new window.naver.maps.Map('map', mapOptions);
-    location.forEach((item) => {
+    loca.forEach((item: any) => {
       const markerOptions = {
         position: new window.naver.maps.LatLng(item.x, item.y),
         map,
@@ -59,8 +55,7 @@ function Home() {
       // 마커를 생성합니다
       const marker = new window.naver.maps.Marker(markerOptions);
     });
-  }, []);
-
+  }
   return (
     <>
       <TopHome />

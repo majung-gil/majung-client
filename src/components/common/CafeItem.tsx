@@ -58,7 +58,7 @@ const CafeTag = styled.div`
 export const Img = styled.img`
   width: 100%;
   position: relative;
-  top: -50px;
+  top: -20px;
   /* height: 100%; */
 `;
 
@@ -100,7 +100,6 @@ function CafeItem({ cafe }: IProps) {
   const history = useHistory();
   const temp: any = cafe?.category.split(',');
   const category = temp[0];
-  console.log(cafe);
   return (
     <CafeCardWrpper onClick={() => history.push(`/cafe/${cafe?.cafe_idx}`)}>
       <CafeCardTop>
