@@ -12,7 +12,6 @@ function Cafe() {
     variables: { cafe_idx: Number(params.cafe_idx) },
   });
   const cafe = data?.select_cafe;
-  console.log(cafe);
   if (cafe && cafe?.cafe_lat) {
     const location = [{ x: cafe?.cafe_lng, y: cafe?.cafe_lat }];
 
