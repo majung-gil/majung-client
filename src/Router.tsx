@@ -8,7 +8,7 @@ import Search from './components/search/Search';
 
 function Router() {
   return (
-    <BrowserRouter>
+    <BrowserRouter forceRefresh={true}>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/cafe/:cafe_idx" component={Cafe} />

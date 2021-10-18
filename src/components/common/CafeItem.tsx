@@ -114,7 +114,11 @@ function CafeItem({ cafe }: IProps) {
   const temp: any = cafe?.category.split(',');
   const category = temp[0];
   return (
-    <CafeCardWrpper onClick={() => history.push(`/cafe/${cafe?.cafe_idx}`)}>
+    <CafeCardWrpper
+      onClick={() => {
+        history.push(`/cafe/${cafe?.cafe_idx}`);
+      }}
+    >
       <CafeCardTop>
         <CafeTag color={cafe?.rep_category.category_color}>{category}</CafeTag>
         <Icon src={`${process.env.PUBLIC_URL}/icon/heart/unabled.svg`} />

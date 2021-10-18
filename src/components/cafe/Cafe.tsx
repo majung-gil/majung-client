@@ -40,7 +40,7 @@ function Cafe() {
   return (
     <>
       <Header />
-      <div id="map" style={{ width: '100%', height: '50%', zIndex: 2, overflow: 'hidden' }} />
+      <div id="map" style={{ width: '100%', height: '45%', zIndex: 2, overflow: 'hidden' }} />
       {cafe ? <CafeModal cafe={cafe} idx={cafe.cafe_idx} /> : null}
     </>
   );
