@@ -6,7 +6,7 @@ import SearchBanner from './SearchBanner';
 import SearchHeader from './SearchHeader';
 
 const SearchWrapper = styled.div`
-  padding: 20px;
+  padding: 20px 20px 50px 20px;
   height: 100%;
   overflow-y: scroll;
 `;

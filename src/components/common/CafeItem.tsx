@@ -31,11 +31,17 @@ const CafeCardName = styled.div`
   font-size: 14px;
   color: ${(props) => props.theme.gray800};
   margin-bottom: 10px;
+  max-height: 10px;
 `;
 const CafeCardImg = styled.div`
   /* flex: 1.8; */
   border-radius: 0px 0px 20px 20px;
   overflow: hidden;
+  background-color: #f6f6f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 `;
 
 const Icon = styled.img``;
@@ -58,8 +64,14 @@ const CafeTag = styled.div`
 export const Img = styled.img`
   width: 100%;
   position: relative;
-  top: -20px;
+  /* top: -20px; */
   /* height: 100%; */
+`;
+
+export const EmptyImg = styled.img`
+  width: 25px;
+  /* position: relative;
+  top: -20px; */
 `;
 
 declare global {
@@ -110,7 +122,11 @@ function CafeItem({ cafe }: IProps) {
       <CafeCardName>{cafe?.cafe_name}</CafeCardName>
 
       <CafeCardImg>
-        <Img alt="write_icon" src={cafe?.cafe_img[0].cafe_img_url} />
+        {cafe && cafe.cafe_img.length > 0 ? (
+          <Img alt="write_icon" src={cafe?.cafe_img[0].cafe_img_url} />
+        ) : (
+          <EmptyImg src={`${process.env.PUBLIC_URL}/icon/emptyImg.svg`} />
+        )}
       </CafeCardImg>
     </CafeCardWrpper>
   );

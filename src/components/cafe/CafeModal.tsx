@@ -30,7 +30,7 @@ const TitleWrapper = styled.div`
   }
 `;
 const Icon = styled.img`
-  /* width: 35px; */
+  /* width: 18px; */
 `;
 
 const CafeTagWrapper = styled.div`
@@ -48,7 +48,8 @@ const Address = styled.div`
 const InterviewButton = styled.div`
   width: 100%;
   height: 90px;
-  background-color: ${(props) => props.theme.mainColor};
+  /* background-color: ${(props) => props.theme.mainColor}; */
+  background-color: #ededed;
   position: absolute;
   bottom: 0;
   margin: -35px -25px;
@@ -58,7 +59,9 @@ const InterviewButton = styled.div`
   span {
     margin-top: -28px;
     text-align: center;
-    color: ${(props) => props.theme.white};
+    /* color: ${(props) => props.theme.white}; */
+
+    color: #a5a5a5;
   }
 `;
 
@@ -95,7 +98,16 @@ const CafeTag = styled.div`
   margin-right: 5px;
 `;
 
-const testArr = [1, 2, 3, 4, 5, 6];
+const EmptyImg = styled.div`
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  background-color: #f6f6f6;
+`;
 function CafeModal({ cafe }: IProps) {
   const category: any = cafe?.category.split(',');
   category?.pop(); // 마지막 배열은 빼준다
@@ -143,9 +155,13 @@ function CafeModal({ cafe }: IProps) {
       </Address>
 
       <CafeImgList>
-        {cafe?.cafe_img.map((item, index) => (
-          <ImgCafe src={item.cafe_img_url} />
-        ))}
+        {cafe && cafe?.cafe_img.length > 0 ? (
+          cafe?.cafe_img.map((item, index) => <ImgCafe src={item.cafe_img_url} />)
+        ) : (
+          <EmptyImg>
+            <ImgCafe src={`${process.env.PUBLIC_URL}/icon/emptyImg.svg`} style={{ width: '25px' }} />
+          </EmptyImg>
+        )}
       </CafeImgList>
 
       <CafeInfo>
@@ -170,7 +186,7 @@ function CafeModal({ cafe }: IProps) {
       </CafeInfo>
 
       <InterviewButton>
-        <span>카페 인터뷰 보기</span>
+        <span>카페 인터뷰 준비중</span>
       </InterviewButton>
     </ModalWrapper>
   );

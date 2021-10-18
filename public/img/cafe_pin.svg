@@ -1,10 +1,10 @@
 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_ii)">
-<rect width="32" height="32" rx="16" fill="#F8C3A6"/>
+<rect width="32" height="32" rx="16" fill="#EEB79B"/>
 </g>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M23.2 17.8C24.7464 17.8 26 16.5464 26 15C26 13.4536 24.7464 12.2 23.2 12.2C21.6536 12.2 20.4 13.4536 20.4 15C20.4 16.5464 21.6536 17.8 23.2 17.8ZM23.2 16.4C23.9732 16.4 24.6 15.7732 24.6 15C24.6 14.2268 23.9732 13.6 23.2 13.6C22.4268 13.6 21.8 14.2268 21.8 15C21.8 15.7732 22.4268 16.4 23.2 16.4Z" fill="white"/>
 <path d="M7.60001 9H22.8V14C22.8 17.866 19.666 21 15.8 21H14.6C10.734 21 7.60001 17.866 7.60001 14V9Z" fill="white"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M7.60001 13V14C7.60001 17.866 10.734 21 14.6 21H15.8C19.666 21 22.8 17.866 22.8 14L22.8 13H7.60001Z" fill="#EF8E58"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M7.60001 13V14C7.60001 17.866 10.734 21 14.6 21H15.8C19.666 21 22.8 17.866 22.8 14L22.8 13H7.60001Z" fill="#C77E58"/>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M7.0719 21.0855C6.71053 20.787 6.92162 20.2 7.39034 20.2H23.0097C23.4784 20.2 23.6895 20.787 23.3281 21.0855L22.6038 21.6839C21.8869 22.2761 20.9861 22.6 20.0562 22.6H10.3438C9.41391 22.6 8.51311 22.2761 7.79624 21.6839L7.0719 21.0855Z" fill="white"/>
 <defs>
 <filter id="filter0_ii" x="-0.316832" y="-0.316832" width="32.6337" height="32.6337" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
