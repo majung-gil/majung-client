@@ -9,6 +9,9 @@ const GlobalStyle = createGlobalStyle`
         font-weight: normal;
         font-style: normal;
     }
+    html {
+  height: initial;
+}
 
     body * {
         z-index: 1;
@@ -34,6 +37,10 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         color: #27282a;
     }
+
+    a{
+        text-decoration: none;
+    }
     
     input:focus {
         color: black;
@@ -57,18 +64,14 @@ const GlobalStyle = createGlobalStyle`
         border: none;
         width: 100%;
     }
-    
+
+    /* 웹 */
     @media screen and (min-width: 769px) {
         body {
-        // font-size: 20px;
-    
-        margin: 0;
-        padding: 0;
         .wrapper {
             margin: 0 auto;
             height: 100vh;
             max-width: 480px;
-    
             -webkit-box-shadow: 0px 0px 22px -2px rgba(0, 0, 0, 0.75);
             -moz-box-shadow: 0px 0px 22px -2px rgba(0, 0, 0, 0.75);
             box-shadow: 0px 0px 22px -2px rgba(0, 0, 0, 0.75);
@@ -78,10 +81,11 @@ const GlobalStyle = createGlobalStyle`
         }
 
         .Wrapperwidth{
-            width: 100%;
+            /* width: 100%; */
+            width: 480px;
         }
-        .top{
-            width: 430px;
+        .header{
+            width: 480px;
         }
     }
     
@@ -99,8 +103,6 @@ const GlobalStyle = createGlobalStyle`
             height: 100vh;
             width: 100%;
             margin: 0 auto;
-            // margin-left:50%;
-            // border:1px solid #efefef;
         }
         }
         .Wrapperwidth{

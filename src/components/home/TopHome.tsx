@@ -20,7 +20,7 @@ const TopWrapper = styled.div`
 `;
 
 const Top = styled.div`
-  /* width: 95%; */
+  /* width: 480px; */
   display: flex;
   align-items: center;
   justify-content: center;

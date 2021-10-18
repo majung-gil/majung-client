@@ -100,8 +100,10 @@ function Home() {
 
   return (
     <>
-      {/* {loading ? '앙?' : '웅'} */}
-      <TopHome />
+      {loading ? '앙?' : '웅'}
+      <div className="Wrapperwidth">
+        <TopHome />
+      </div>
       <div id="map" style={{ width: '100%', height: '100%', zIndex: 2, overflow: 'hidden' }} />
       <CafeCardListWrapper className="Wrapperwidth">
         {CafeList && CafeList.map((cafe: any) => <CafeItem cafe={cafe} idx={cafe.cafe_idx} />)}

@@ -1,23 +1,46 @@
 import styled from 'styled-components';
 
 const ModalWrapper = styled.div`
-  height: 100%;
-  width: 160px;
-  background: #ffffff;
-  position: absolute;
-  z-index: 300;
-  right: 0;
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  text-align: right;
-  font-size: 14px;
-  hr {
-    border: 1px solid #f1f3f5;
-    margin-top: 25px;
+  @media screen and (min-width: 769px) {
+    height: 100%;
+    width: 160px;
+    background: #ffffff;
+    position: absolute;
+    z-index: 300;
+    left: 50;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    font-size: 14px;
+    hr {
+      border: 1px solid #f1f3f5;
+      margin-top: 25px;
+    }
+    span {
+      margin-top: 30px;
+    }
   }
-  span {
-    margin-top: 30px;
+
+  @media screen and (max-width: 768px) {
+    height: 100%;
+    width: 160px;
+    background: #ffffff;
+    position: absolute;
+    z-index: 300;
+    right: 0;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    font-size: 14px;
+    hr {
+      border: 1px solid #f1f3f5;
+      margin-top: 25px;
+    }
+    span {
+      margin-top: 30px;
+    }
   }
 `;
 
@@ -45,20 +68,32 @@ function SideMenu(props: { data: any; state: any; closeModal: any }) {
   return state ? (
     <ModalWrapper>
       <Icon src={`${process.env.PUBLIC_URL}/icon/cancel.svg`} onClick={(event) => closeModal(event)} />
-
-      <Profile>이유진</Profile>
+      <Profile>안녕하세요!</Profile>
       <hr />
-      <span>🔎 검색</span>
-      <span>💙 관심 카페</span>
-      <span>🚪 로그아웃</span>
+      <span>
+        <a href="/search">🔎 검색</a>
+      </span>
+      <span>
+        <a href="/favorite">💙 관심 카페</a>
+      </span>
+      {/* <span>🚪 로그아웃</span>  */}
       <hr />
-      <span>🍩 마중이들</span>
+      <span>
+        <a href="https://www.westernfriends.me/" target="_blank">
+          🍩 마중이들
+        </a>
+      </span>
       <span>💌 사용자 피드백</span>
       <span>⚙️ 업데이트 정보</span>
-
       <Info>
-        <span>instagram</span>
-        <span>mail</span>
+        <span>
+          <a href="https://www.instagram.com/majung_gil/" target="_blank">
+            instagram
+          </a>
+        </span>
+        <span>
+          <a href="mailto:westernfriends21@gmail.com">mail</a>
+        </span>
       </Info>
     </ModalWrapper>
   ) : (

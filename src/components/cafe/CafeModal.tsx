@@ -5,7 +5,7 @@ import { IProps } from '../common/CafeItem';
 import { ImgCafe } from '../common/Common';
 
 const ModalWrapper = styled.div`
-  height: 55%;
+  height: 65%;
   background-color: ${(props) => props.theme.white};
   border-radius: 16px 16px 0px 0px;
   position: absolute;
@@ -35,6 +35,7 @@ const Icon = styled.img`
 
 const CafeTagWrapper = styled.div`
   display: flex;
+  margin-top: 5px;
 `;
 
 const Address = styled.div`
@@ -61,7 +62,6 @@ const InterviewButton = styled.div`
     /* margin-top: -28px; */
     text-align: center;
     /* color: ${(props) => props.theme.white}; */
-
     color: #a5a5a5;
   }
 `;
@@ -77,6 +77,7 @@ const CafeInfo = styled.div`
   flex-direction: column;
   max-height: 140px;
   overflow-y: scroll;
+  padding: 0px 0px 20px 0px;
 `;
 const CafeTextWrapper = styled.div`
   display: flex;
@@ -189,7 +190,7 @@ function CafeModal({ cafe }: IProps) {
           </CafeTextWrapper>
         </CafeInfo>
       </ModalWrapper>
-      <InterviewButton>
+      <InterviewButton className="Wrapperwidth">
         <span>카페 인터뷰 준비중</span>
       </InterviewButton>
     </>
