@@ -30,13 +30,6 @@ function Home() {
   const { loading, error, data } = useQuery(SELECT_CAFE_LIST);
   const [myLocation, setMyLocation] = useState<{ latitude: number; longitude: number } | string>('');
   const CafeList = data?.select_cafe_list.rows;
-  const loca = CafeList?.map((_: any) => ({
-    x: _.cafe_lng,
-    y: _.cafe_lat,
-    cafe_idx: _.cafe_idx,
-    cafe_name: _.cafe_name,
-  }));
-
   // get current position
   useEffect(() => {
     if (navigator.geolocation) {
@@ -52,24 +45,38 @@ function Home() {
   }, []);
 
   useEffect(() => {
-    if (CafeList && loca) {
+    if (CafeList) {
       const mapOptions = {
         center: new window.naver.maps.LatLng(37.56019115294959, 126.83112338892903),
         zoom: 13,
       };
 
       const map = new window.naver.maps.Map('map', mapOptions);
-      loca.forEach((item: any) => {
-        const markerOptions = {
-          position: new window.naver.maps.LatLng(item.x, item.y),
-          map,
-          icon: {
-            url: `${process.env.PUBLIC_URL}/img/cafe_pin.svg`,
-            size: new window.naver.maps.Size(40, 42),
-            origin: new window.naver.maps.Point(0, 0),
-            anchor: new window.naver.maps.Point(25, 26),
-          },
-        };
+      CafeList.forEach((item: any) => {
+        let markerOptions;
+        if (item.is_visit) {
+          markerOptions = {
+            position: new window.naver.maps.LatLng(item.cafe_lng, item.cafe_lat),
+            map,
+            icon: {
+              url: `${process.env.PUBLIC_URL}/img/cafe_pin.svg`,
+              size: new window.naver.maps.Size(40, 42),
+              origin: new window.naver.maps.Point(0, 0),
+              anchor: new window.naver.maps.Point(25, 26),
+            },
+          };
+        } else {
+          markerOptions = {
+            position: new window.naver.maps.LatLng(item.cafe_lng, item.cafe_lat),
+            map,
+            icon: {
+              url: `${process.env.PUBLIC_URL}/img/cafe_pin_not.svg`,
+              size: new window.naver.maps.Size(40, 42),
+              origin: new window.naver.maps.Point(0, 0),
+              anchor: new window.naver.maps.Point(25, 26),
+            },
+          };
+        }
         // 마커를 생성합니다
         const marker = new window.naver.maps.Marker(markerOptions);
         const contentString = [
@@ -106,7 +113,10 @@ function Home() {
       </div>
       <div id="map" style={{ width: '100%', height: '100%', zIndex: 2, overflow: 'hidden' }} />
       <CafeCardListWrapper className="Wrapperwidth">
-        {CafeList && CafeList.map((cafe: any) => <CafeItem cafe={cafe} idx={cafe.cafe_idx} />)}
+        {CafeList &&
+          CafeList.map((cafe: any) =>
+            cafe && cafe.cafe_img.length > 0 ? <CafeItem cafe={cafe} idx={cafe.cafe_idx} /> : null,
+          )}
       </CafeCardListWrapper>
     </>
   );

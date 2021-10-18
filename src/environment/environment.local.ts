@@ -1,3 +1,3 @@
 export const environment = {
-  api_server_url: 'http://13.125.91.117:8089/graphql',
+  api_server_url: 'http://localhost:8089/graphql',
 };
