@@ -47,17 +47,18 @@ const Address = styled.div`
 
 const InterviewButton = styled.div`
   width: 100%;
-  height: 90px;
+  height: 60px;
   /* background-color: ${(props) => props.theme.mainColor}; */
   background-color: #ededed;
   position: absolute;
   bottom: 0;
-  margin: -35px -25px;
+  z-index: 3000;
+  /* margin: -35px -25px; */
   display: flex;
   justify-content: center;
   align-items: center;
   span {
-    margin-top: -28px;
+    /* margin-top: -28px; */
     text-align: center;
     /* color: ${(props) => props.theme.white}; */
 
@@ -126,71 +127,72 @@ function CafeModal({ cafe }: IProps) {
   }
 
   return (
-    <ModalWrapper className="Wrapperwidth">
-      <TitleWrapper>
-        <span>
-          {cafe?.cafe_name}{' '}
-          {cafe?.cafe_insta ? (
-            <Icon
-              src={`${process.env.PUBLIC_URL}/icon/insta_logo.svg`}
-              onClick={() => window.open(`https://www.instagram.com/${cafe?.cafe_insta}/`)}
-            />
-          ) : null}
-        </span>
-
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <Icon src={`${process.env.PUBLIC_URL}/icon/heart/enabled.svg`} />
-          <Icon src={`${process.env.PUBLIC_URL}/icon/share.svg`} />
-        </div>
-      </TitleWrapper>
-      <CafeTagWrapper>
-        {_category?.map((item: any, index: any) => (
-          <CafeTag color={item.category_color} itemID={index}>
-            {item.category_name}
-          </CafeTag>
-        ))}
-      </CafeTagWrapper>
-
-      <Address>
-        <Icon src={`${process.env.PUBLIC_URL}/icon/map.svg`} />
-        {cafe?.cafe_address}
-      </Address>
-
-      <CafeImgList>
-        {cafe && cafe?.cafe_img.length > 0 ? (
-          cafe?.cafe_img.map((item, index) => <ImgCafe src={item.cafe_img_url} />)
-        ) : (
-          <EmptyImg>
-            <ImgCafe src={`${process.env.PUBLIC_URL}/icon/emptyImg.svg`} style={{ width: '25px' }} />
-          </EmptyImg>
-        )}
-      </CafeImgList>
-
-      <CafeInfo>
-        <CafeTextWrapper>
-          <Icon src={`${process.env.PUBLIC_URL}/icon/call.svg`} />
-          <span>{cafe?.cafe_phone}</span>
-        </CafeTextWrapper>
-        <CafeTextWrapper>
-          <Icon src={`${process.env.PUBLIC_URL}/icon/time.svg`} />
+    <>
+      <ModalWrapper className="Wrapperwidth">
+        <TitleWrapper>
           <span>
-            {cafe?.cafe_open_time ? cafe?.cafe_open_time + ' ~ ' + cafe?.cafe_close_time : '영업시간 정보없음'}
+            {cafe?.cafe_name}{' '}
+            {cafe?.cafe_insta ? (
+              <Icon
+                src={`${process.env.PUBLIC_URL}/icon/insta_logo.svg`}
+                onClick={() => window.open(`https://www.instagram.com/${cafe?.cafe_insta}/`)}
+              />
+            ) : null}
           </span>
-        </CafeTextWrapper>
-        <CafeTextWrapper>
-          <Icon src={`${process.env.PUBLIC_URL}/icon/parking.svg`} />
-          <span>{cafe?.is_parking ? '주차 가능' : '주차 불가능'}</span>
-        </CafeTextWrapper>
-        <CafeTextWrapper>
-          <Icon src={`${process.env.PUBLIC_URL}/icon/delivery.svg`} />
-          <span>{cafe?.is_delivery ? '배달 가능' : '배달 불가능'}</span>
-        </CafeTextWrapper>
-      </CafeInfo>
 
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <Icon src={`${process.env.PUBLIC_URL}/icon/heart/enabled.svg`} />
+            <Icon src={`${process.env.PUBLIC_URL}/icon/share.svg`} />
+          </div>
+        </TitleWrapper>
+        <CafeTagWrapper>
+          {_category?.map((item: any, index: any) => (
+            <CafeTag color={item.category_color} itemID={index}>
+              {item.category_name}
+            </CafeTag>
+          ))}
+        </CafeTagWrapper>
+
+        <Address>
+          <Icon src={`${process.env.PUBLIC_URL}/icon/map.svg`} />
+          {cafe?.cafe_address}
+        </Address>
+
+        <CafeImgList>
+          {cafe && cafe?.cafe_img.length > 0 ? (
+            cafe?.cafe_img.map((item, index) => <ImgCafe src={item.cafe_img_url} />)
+          ) : (
+            <EmptyImg>
+              <ImgCafe src={`${process.env.PUBLIC_URL}/icon/emptyImg.svg`} style={{ width: '25px' }} />
+            </EmptyImg>
+          )}
+        </CafeImgList>
+
+        <CafeInfo>
+          <CafeTextWrapper>
+            <Icon src={`${process.env.PUBLIC_URL}/icon/call.svg`} />
+            <span>{cafe?.cafe_phone}</span>
+          </CafeTextWrapper>
+          <CafeTextWrapper>
+            <Icon src={`${process.env.PUBLIC_URL}/icon/time.svg`} />
+            <span>
+              {cafe?.cafe_open_time ? cafe?.cafe_open_time + ' ~ ' + cafe?.cafe_close_time : '영업시간 정보없음'}
+            </span>
+          </CafeTextWrapper>
+          <CafeTextWrapper>
+            <Icon src={`${process.env.PUBLIC_URL}/icon/parking.svg`} />
+            <span>{cafe?.is_parking ? '주차 가능' : '주차 불가능'}</span>
+          </CafeTextWrapper>
+          <CafeTextWrapper>
+            <Icon src={`${process.env.PUBLIC_URL}/icon/delivery.svg`} />
+            <span>{cafe?.is_delivery ? '배달 가능' : '배달 불가능'}</span>
+          </CafeTextWrapper>
+        </CafeInfo>
+      </ModalWrapper>
       <InterviewButton>
         <span>카페 인터뷰 준비중</span>
       </InterviewButton>
-    </ModalWrapper>
+    </>
   );
 }
 
