@@ -146,6 +146,22 @@ function CafeModal({ cafe }: IProps) {
 
   const { data } = useQuery(SELECT_CATEGORY_LIST);
   const category_list = data?.select_category_list.rows;
+  const review = [
+    {
+      reviewer: '🐯',
+      review:
+        '구움과자를 먹으며 유럽을 가고싶게 하는.... 레몬 마들렌도..다양한 종류의 구움과자들도 진짜 너무 굳...! 너무 고급스러워서 나중에 선물용으로 하기도 좋을 것 같아요! 티를 시키면 함께 나오는 모래시계 쏘 큩....',
+    },
+    {
+      reviewer: '🐰',
+      review: '작지만 다양한 프랑스 구움과자를 즐길 수 있는 곳 🌱',
+    },
+    {
+      reviewer: '🧸',
+      review:
+        '자리는 협소했지만 분위기가 따뜻하고 다양한 종류의 구움과자와 티가 있어서 좋았습니다! (개인적으로 레몬마들렌이 맛있었어요♥)',
+    },
+  ];
 
   let _category = [];
   for (let category_name of category) {
@@ -156,6 +172,8 @@ function CafeModal({ cafe }: IProps) {
     };
     _category.push(item);
   }
+  const review_json: [] = JSON.parse(cafe ? cafe.review_json : '');
+  console.log(review_json);
   return (
     <>
       <ModalWrapper className="Wrapperwidth">
@@ -229,24 +247,15 @@ function CafeModal({ cafe }: IProps) {
               <br />
               <br />
               <Title>💬 마중크루의 한줄평!</Title>
-              <TextWrapper>
-                <Profile>
-                  <span>🐯</span>
-                </Profile>
-                <p>빈티지스러운 인테리어와 각기 다른 컵이 너무 화로워요! 분위기에 취하고 싶을 때 오고 싶은 곳</p>
-              </TextWrapper>
-              <TextWrapper>
-                <Profile>
-                  <span>🐯</span>
-                </Profile>
-                <p>아 개졸린데</p>
-              </TextWrapper>
-              <TextWrapper>
-                <Profile>
-                  <span>🐯</span>
-                </Profile>
-                <p>진심 졸려</p>
-              </TextWrapper>
+              {review_json &&
+                review_json.map((item: any) => (
+                  <TextWrapper>
+                    <Profile>
+                      <span>{item.reviewer}</span>
+                    </Profile>
+                    <p>{item.review}</p>
+                  </TextWrapper>
+                ))}
             </>
           ) : null}
         </CafeInfo>

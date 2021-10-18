@@ -40,6 +40,7 @@ export const SELECT_CAFE_ONE = gql`
       cafe_lat
       cafe_lng
       cafe_lat
+      review_json
       cafe_img {
         cafe_img_idx
         cafe_img_url

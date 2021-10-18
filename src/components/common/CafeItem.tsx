@@ -96,6 +96,7 @@ export interface IProps {
     cafe_open_time: string;
     cafe_close_time: string;
     cafe_insta: string;
+    review_json: string;
     cafe_img: [
       {
         cafe_idx: number;
