@@ -140,12 +140,14 @@ function CafeModal({ cafe }: IProps) {
 
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <Icon src={`${process.env.PUBLIC_URL}/icon/heart/enabled.svg`} />
-          <Icon src={`${process.env.PUBLIC_URL}/icon/cancel.svg`} />
+          <Icon src={`${process.env.PUBLIC_URL}/icon/share.svg`} />
         </div>
       </TitleWrapper>
       <CafeTagWrapper>
         {_category?.map((item: any, index: any) => (
-          <CafeTag color={item.category_color}>{item.category_name}</CafeTag>
+          <CafeTag color={item.category_color} itemID={index}>
+            {item.category_name}
+          </CafeTag>
         ))}
       </CafeTagWrapper>
 

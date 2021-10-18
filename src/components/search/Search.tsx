@@ -95,7 +95,7 @@ function Search() {
           </Text>
 
           <CafeCardListWrapper className="Wrapperwidth">
-            {cafe_item && cafe_item?.cafe_coffee.map((cafe: any) => <CafeItem cafe={cafe} />)}
+            {cafe_item && cafe_item?.cafe_coffee.map((cafe: any) => <CafeItem cafe={cafe} idx={cafe.cafe_idx} />)}
           </CafeCardListWrapper>
         </ItemWrapper>
 
@@ -106,7 +106,7 @@ function Search() {
           </Text>
 
           <CafeCardListWrapper className="Wrapperwidth">
-            {cafe_item && cafe_item?.cafe_photo.map((cafe: any) => <CafeItem cafe={cafe} />)}
+            {cafe_item && cafe_item?.cafe_photo.map((cafe: any) => <CafeItem cafe={cafe} idx={cafe.cafe_idx} />)}
           </CafeCardListWrapper>
         </ItemWrapper>
 
@@ -117,7 +117,7 @@ function Search() {
           </Text>
 
           <CafeCardListWrapper className="Wrapperwidth">
-            {cafe_item && cafe_item?.cafe_dessert.map((cafe: any) => <CafeItem cafe={cafe} />)}
+            {cafe_item && cafe_item?.cafe_dessert.map((cafe: any) => <CafeItem cafe={cafe} idx={cafe.cafe_idx} />)}
           </CafeCardListWrapper>
         </ItemWrapper>
       </SearchWrapper>

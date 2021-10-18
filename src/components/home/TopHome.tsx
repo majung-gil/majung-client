@@ -109,7 +109,7 @@ function TopHome() {
           <TopTitleWrapper>
             <h3>마중</h3>
             <span>따뜻한 오후, 커피 한 잔 어떠세요?</span>
-            <ImgChracter src={`${process.env.PUBLIC_URL}/img/c_majung.svg`} />
+            <ImgChracter src={`${process.env.PUBLIC_URL}/img/ch.png`} />
           </TopTitleWrapper>
         </TopWrapper>
       </Top>

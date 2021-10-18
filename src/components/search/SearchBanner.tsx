@@ -19,7 +19,7 @@ function SearchBanner() {
   return (
     <>
       <Banner>
-        <ImgBannerChracter src={`${process.env.PUBLIC_URL}/img/c_majung.svg`} />
+        <ImgBannerChracter src={`${process.env.PUBLIC_URL}/img/ch.png`} />
         <span>마중이가 카페를 추천해드려요!</span>
       </Banner>
     </>
