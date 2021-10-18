@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 import styled from 'styled-components';
 import { SELECT_CATEGORY_LIST } from '../../apollo/query';
-import { IProps } from '../common/CafeItem';
+import { Img, IProps } from '../common/CafeItem';
 import { ImgCafe } from '../common/Common';
 
 const ModalWrapper = styled.div`
@@ -75,7 +75,7 @@ const CafeImgList = styled.div`
 const CafeInfo = styled.div`
   display: flex;
   flex-direction: column;
-  max-height: 140px;
+  max-height: 250px;
   overflow-y: scroll;
   padding: 0px 0px 20px 0px;
 `;
@@ -110,6 +110,36 @@ const EmptyImg = styled.div`
   margin: 5px;
   background-color: #f6f6f6;
 `;
+
+const Title = styled.div`
+  color: #d4845b;
+  font-weight: bold;
+`;
+
+const Profile = styled.div`
+  width: 45px;
+  height: 45px;
+  border-radius: 50% 50%;
+  background-color: #f6f6f6;
+  flex: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const TextWrapper = styled.div`
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  p {
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    padding: 5px 10px;
+  }
+`;
+
 function CafeModal({ cafe }: IProps) {
   const category: any = cafe?.category.split(',');
   category?.pop(); // 마지막 배열은 빼준다
@@ -126,10 +156,16 @@ function CafeModal({ cafe }: IProps) {
     };
     _category.push(item);
   }
-
   return (
     <>
       <ModalWrapper className="Wrapperwidth">
+        {cafe?.is_visit ? (
+          <Img
+            style={{ width: '120px', marginBottom: '1px' }}
+            src={`${process.env.PUBLIC_URL}/img/pick.svg`}
+            onClick={() => window.open(`https://www.instagram.com/${cafe?.cafe_insta}/`)}
+          />
+        ) : null}
         <TitleWrapper>
           <span>
             {cafe?.cafe_name}{' '}
@@ -188,6 +224,31 @@ function CafeModal({ cafe }: IProps) {
             <Icon src={`${process.env.PUBLIC_URL}/icon/delivery.svg`} />
             <span>{cafe?.is_delivery ? '배달 가능' : '배달 불가능'}</span>
           </CafeTextWrapper>
+          {cafe?.is_visit ? (
+            <>
+              <br />
+              <br />
+              <Title>💬 마중크루의 한줄평!</Title>
+              <TextWrapper>
+                <Profile>
+                  <span>🐯</span>
+                </Profile>
+                <p>빈티지스러운 인테리어와 각기 다른 컵이 너무 화로워요! 분위기에 취하고 싶을 때 오고 싶은 곳</p>
+              </TextWrapper>
+              <TextWrapper>
+                <Profile>
+                  <span>🐯</span>
+                </Profile>
+                <p>아 개졸린데</p>
+              </TextWrapper>
+              <TextWrapper>
+                <Profile>
+                  <span>🐯</span>
+                </Profile>
+                <p>진심 졸려</p>
+              </TextWrapper>
+            </>
+          ) : null}
         </CafeInfo>
       </ModalWrapper>
       <InterviewButton className="Wrapperwidth">
