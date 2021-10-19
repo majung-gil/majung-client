@@ -79,11 +79,13 @@ function SideMenu(props: { data: any; state: any; closeModal: any }) {
       {/* <span>🚪 로그아웃</span>  */}
       <hr />
       <span>
-        <a href="https://www.westernfriends.me/" target="_blank">
-          🍩 마중이들
+        <a href="/team">🍩 마중이들</a>
+      </span>
+      <span>
+        <a href="https://forms.gle/M9kunLP7drsUhm9M8" target="_blank">
+          💌 사용자 피드백
         </a>
       </span>
-      <span>💌 사용자 피드백</span>
       <span>⚙️ 업데이트 정보</span>
       <Info>
         <span>

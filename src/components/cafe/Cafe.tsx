@@ -35,11 +35,11 @@ function Cafe() {
       // 마커를 생성합니다
       const marker = new window.naver.maps.Marker(markerOptions);
       const contentString = [
-        `<div style="background: #FFFFFF; border: 3px solid #EEB79B; padding: 10px; border-radius: 7px; margin-bottom: 5px">
+        `<div style="background: #FFFFFF; border: 3px solid #EEB79B; padding: 10px; border-radius: 7px; margin-bottom: 5px;">
           <a href="https://m.map.naver.com/search2/search.naver?query=${encodeURI(
             cafe.cafe_name,
           )}" target="_blank" style="text-decoration: none;">
-          <p>☕️ ${cafe.cafe_name}</p></a>
+          <span style=" font-size: 13px;">☕️ ${cafe.cafe_name}</span>
           </div>`,
       ].join('');
 

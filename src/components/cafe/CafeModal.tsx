@@ -153,6 +153,10 @@ function CafeModal({ cafe }: IProps) {
   const { data } = useQuery(SELECT_CATEGORY_LIST);
   const category_list = data?.select_category_list.rows;
 
+  if (!Kakao.isInitialized()) {
+    Kakao.init('a31b5c49422e1fe862f438fa5645de92');
+  }
+
   const createKakaoButton = () => {
     Kakao.Link.createDefaultButton({
       container: '#kakao-link-btn',
@@ -166,7 +170,7 @@ function CafeModal({ cafe }: IProps) {
             : 'https://majung-img-server.s3.ap-northeast-2.amazonaws.com/20211019_24ca98f201de47c191907540493bfde8.png'
         }`,
         link: {
-          mobileWebUrl: `http://majung-gil/cafe/${cafe?.cafe_idx}`,
+          // mobileWebUrl: `http://majung-gil/cafe/${cafe?.cafe_idx}`,
           webUrl: `http://majung-gil/cafe/${cafe?.cafe_idx}`,
         },
       },
@@ -196,11 +200,7 @@ function CafeModal({ cafe }: IProps) {
     <>
       <ModalWrapper className="Wrapperwidth">
         {cafe?.is_visit ? (
-          <Img
-            style={{ width: '120px', marginBottom: '1px' }}
-            src={`${process.env.PUBLIC_URL}/img/pick.svg`}
-            onClick={() => window.open(`https://www.instagram.com/${cafe?.cafe_insta}/`)}
-          />
+          <Img style={{ width: '120px', marginBottom: '1px' }} src={`${process.env.PUBLIC_URL}/img/pick.svg`} />
         ) : null}
         <TitleWrapper>
           <span>
@@ -215,7 +215,6 @@ function CafeModal({ cafe }: IProps) {
 
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <Icon src={`${process.env.PUBLIC_URL}/icon/heart/enabled.svg`} />
-
             <a id="kakao-link-btn">
               <Icon onClick={createKakaoButton} src={`${process.env.PUBLIC_URL}/icon/share.svg`} />
             </a>
