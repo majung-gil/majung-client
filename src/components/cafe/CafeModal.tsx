@@ -170,16 +170,16 @@ function CafeModal({ cafe }: IProps) {
             : 'https://majung-img-server.s3.ap-northeast-2.amazonaws.com/20211019_24ca98f201de47c191907540493bfde8.png'
         }`,
         link: {
-          // mobileWebUrl: `http://majung-gil/cafe/${cafe?.cafe_idx}`,
-          webUrl: `http://majung-gil/cafe/${cafe?.cafe_idx}`,
+          mobileWebUrl: `http://majung-gil.com/cafe/1`,
+          webUrl: `http://majung-gil.com/cafe/1`,
         },
       },
       buttons: [
         {
           title: '지금 보러가기!',
           link: {
-            mobileWebUrl: `http://majung-gil/cafe/${cafe?.cafe_idx}`,
-            webUrl: `http://majung-gil/cafe/${cafe?.cafe_idx}`,
+            mobileWebUrl: `http://majung-gil.com/cafe/1`,
+            webUrl: `http://majung-gil.com/cafe/1`,
           },
         },
       ],
