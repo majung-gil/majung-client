@@ -1,0 +1,17 @@
+import React, { useEffect } from 'react'
+const KakaoShareButton = () => {
+  useEffect(() => {
+    createKakaoButton()
+  }, [])
+  
+  }
+  return (
+    <div className="kakao-share-button">
+      {/* Kakao share button */}
+      <button id="kakao-link-btn">
+        <img src="/icons/kakao.png" alt="kakao-share-icon" />
+      </button>
+    </div>
+  )
+}
+export default KakaoShareButton

@@ -52,7 +52,7 @@ function SearchHeader() {
       >
         <Icon src={`${process.env.PUBLIC_URL}/icon/back.svg`} />
       </Between>
-      <SearchInput type="text" name="title" placeholder="가고 싶은 카페가 있나요?" />
+      <SearchInput type="text" name="title" placeholder="가고 싶은 카페가 있나요? (업뎃예정!)" />
       {/* <Between>
         <Icon src={`${process.env.PUBLIC_URL}/icon/heart/unabled.svg`} />
       </Between> */}

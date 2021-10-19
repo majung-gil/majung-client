@@ -6,7 +6,6 @@ import { SELECT_CAFE_LIST } from '../../apollo/query';
 import CafeItem from '../common/CafeItem';
 import TopHome from './TopHome';
 import { css } from '@emotion/react';
-import PacmanLoader from 'react-spinners/ClipLoader';
 // 하단 카페리스트 영역
 const CafeCardListWrapper = styled.div`
   position: absolute;
@@ -18,8 +17,6 @@ const CafeCardListWrapper = styled.div`
   z-index: 200;
   /* height: 154px; */
 `;
-
-const testArr = [1, 2, 3, 4, 5, 6];
 
 declare global {
   interface Window {

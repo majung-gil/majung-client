@@ -74,11 +74,6 @@ export const EmptyImg = styled.img`
   top: -20px; */
 `;
 
-declare global {
-  interface Window {
-    kakao: any;
-  }
-}
 export interface IProps {
   idx: number;
   cafe?: {
@@ -114,6 +109,7 @@ function CafeItem({ cafe }: IProps) {
   const history = useHistory();
   const temp: any = cafe?.category.split(',');
   const category = temp[0];
+
   return (
     <CafeCardWrpper
       onClick={() => {

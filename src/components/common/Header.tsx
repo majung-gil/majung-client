@@ -41,8 +41,18 @@ function Header() {
         <Icon src={`${process.env.PUBLIC_URL}/icon/back.svg`} />
       </Left>
       <Right>
-        <Icon src={`${process.env.PUBLIC_URL}/icon/search.svg`} />
-        <Icon src={`${process.env.PUBLIC_URL}/icon/sidemenu.svg`} />
+        <Icon
+          src={`${process.env.PUBLIC_URL}/icon/search.svg`}
+          onClick={() => {
+            history.push('/search');
+          }}
+        />
+        <Icon
+          src={`${process.env.PUBLIC_URL}/icon/heart.svg`}
+          onClick={() => {
+            history.push('/favorite');
+          }}
+        />
       </Right>
     </Wrapper>
   );

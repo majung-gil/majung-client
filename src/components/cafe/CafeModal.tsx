@@ -75,9 +75,10 @@ const CafeImgList = styled.div`
 const CafeInfo = styled.div`
   display: flex;
   flex-direction: column;
-  max-height: 250px;
+  height: 65%;
+  /* max-height: 250px; */
   overflow-y: scroll;
-  padding: 0px 0px 20px 0px;
+  padding: 0px 0px 56px 0px;
 `;
 const CafeTextWrapper = styled.div`
   display: flex;
@@ -135,10 +136,15 @@ const TextWrapper = styled.div`
   p {
     font-size: 12px;
     line-height: 20px;
-    text-align: center;
     padding: 5px 10px;
   }
 `;
+declare global {
+  interface Window {
+    Kakao: any;
+  }
+}
+const { Kakao, location } = window;
 
 function CafeModal({ cafe }: IProps) {
   const category: any = cafe?.category.split(',');
@@ -146,22 +152,34 @@ function CafeModal({ cafe }: IProps) {
 
   const { data } = useQuery(SELECT_CATEGORY_LIST);
   const category_list = data?.select_category_list.rows;
-  const review = [
-    {
-      reviewer: '🐯',
-      review:
-        '구움과자를 먹으며 유럽을 가고싶게 하는.... 레몬 마들렌도..다양한 종류의 구움과자들도 진짜 너무 굳...! 너무 고급스러워서 나중에 선물용으로 하기도 좋을 것 같아요! 티를 시키면 함께 나오는 모래시계 쏘 큩....',
-    },
-    {
-      reviewer: '🐰',
-      review: '작지만 다양한 프랑스 구움과자를 즐길 수 있는 곳 🌱',
-    },
-    {
-      reviewer: '🧸',
-      review:
-        '자리는 협소했지만 분위기가 따뜻하고 다양한 종류의 구움과자와 티가 있어서 좋았습니다! (개인적으로 레몬마들렌이 맛있었어요♥)',
-    },
-  ];
+  const createKakaoButton = () => {
+    Kakao.Link.createDefaultButton({
+      container: '#kakao-link-btn',
+      objectType: 'feed',
+      content: {
+        title: `마중길 투어를 함께하고 싶은 당신에게! `,
+        description: `${cafe?.cafe_name} 같이가요 ☕️`,
+        imageUrl: `${
+          cafe && cafe?.cafe_img.length > 0
+            ? cafe?.cafe_img[0].cafe_img_url
+            : 'https://majung-img-server.s3.ap-northeast-2.amazonaws.com/20211019_24ca98f201de47c191907540493bfde8.png'
+        }`,
+        link: {
+          mobileWebUrl: `http://majung-gil/cafe/${cafe?.cafe_idx}`,
+          webUrl: `http://majung-gil/cafe/${cafe?.cafe_idx}`,
+        },
+      },
+      buttons: [
+        {
+          title: '지금 보러가기!',
+          link: {
+            mobileWebUrl: `http://majung-gil/cafe/${cafe?.cafe_idx}`,
+            webUrl: `http://majung-gil/cafe/${cafe?.cafe_idx}`,
+          },
+        },
+      ],
+    });
+  };
 
   let _category = [];
   for (let category_name of category) {
@@ -197,7 +215,10 @@ function CafeModal({ cafe }: IProps) {
 
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <Icon src={`${process.env.PUBLIC_URL}/icon/heart/enabled.svg`} />
-            <Icon src={`${process.env.PUBLIC_URL}/icon/share.svg`} />
+
+            <a id="kakao-link-btn">
+              <Icon onClick={createKakaoButton} src={`${process.env.PUBLIC_URL}/icon/share.svg`} />
+            </a>
           </div>
         </TitleWrapper>
         <CafeTagWrapper>
