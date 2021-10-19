@@ -148,7 +148,7 @@ function Team() {
           <SubHeading>Special Thanks To ♥️</SubHeading>
           <SubText>
             👶🏻뽀짝한 마중이를 탄생시켜준 윤줜 <br />
-            🗺지도 디자인을 맡아준 소진 <br />
+            🗺지도 디자인을 맡아준 쏘진 <br />
             💰마중길의 시작이 되었던 10만원 프로젝트
           </SubText>
         </SubWrapper>

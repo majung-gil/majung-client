@@ -9,10 +9,13 @@ const GlobalStyle = createGlobalStyle`
         font-weight: normal;
         font-style: normal;
     }
+    html {
+  height: initial;
+}
     body * {
         z-index: 1;
         /* background-color: #fff; */
-        overflow: hidden;
+        /* overflow: hidden; */
         box-sizing: border-box;
         margin: 0;
         padding: 0;
