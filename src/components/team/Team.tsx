@@ -22,7 +22,7 @@ const Title = styled.div`
 const SubHeading = styled.div`
   color: white;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 20x;
   letter-spacing: 2.5px;
 `;
 
@@ -42,10 +42,10 @@ const SubWrapper = styled.div`
 
 const Emoji = styled.div`
   background: #f6f6f6;
-  width: 90px;
-  height: 90px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
-  font-size: 50px;
+  font-size: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,10 +64,11 @@ const Text = styled.div`
   border-radius: 8px;
   margin: 8px;
   line-height: 25px;
+  font-size: 14px;
   b {
     font-weight: 500;
     color: #2f80ed;
-    font-size: 19px;
+    font-size: 16px;
     margin-bottom: 10px;
   }
   p {
@@ -87,6 +88,7 @@ const SubText = styled.div`
   line-height: 35px;
   margin-top: 10px;
   text-align: center;
+  font-size: 14px;
 `;
 
 const Max = styled.div`
