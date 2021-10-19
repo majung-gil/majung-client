@@ -33,8 +33,6 @@ function Home() {
   const { loading, error, data } = useQuery(SELECT_CAFE_LIST);
   const CafeList = data?.select_cafe_list.rows;
 
-  let [color, setColor] = useState('#ffffff');
-
   if (CafeList) {
     const mapOptions = {
       center: new window.naver.maps.LatLng(37.56019115294959, 126.83112338892903),

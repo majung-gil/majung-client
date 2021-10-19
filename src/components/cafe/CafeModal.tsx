@@ -152,6 +152,7 @@ function CafeModal({ cafe }: IProps) {
 
   const { data } = useQuery(SELECT_CATEGORY_LIST);
   const category_list = data?.select_category_list.rows;
+
   const createKakaoButton = () => {
     Kakao.Link.createDefaultButton({
       container: '#kakao-link-btn',
@@ -191,7 +192,6 @@ function CafeModal({ cafe }: IProps) {
     _category.push(item);
   }
   const review_json: [] = JSON.parse(cafe ? cafe.review_json : '');
-  console.log(review_json);
   return (
     <>
       <ModalWrapper className="Wrapperwidth">
