@@ -86,7 +86,11 @@ function SideMenu(props: { data: any; state: any; closeModal: any }) {
           💌 사용자 피드백
         </a>
       </span>
-      <span>⚙️ 업데이트 정보</span>
+      <span>
+        <a href="https://www.westernfriends.me/update" target="_blank">
+          ⚙️ 업데이트 정보
+        </a>
+      </span>
       <Info>
         <span>
           <a href="https://www.instagram.com/majung_gil/" target="_blank">
