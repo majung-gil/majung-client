@@ -79,8 +79,8 @@ function Favorite() {
             </Cafe>
           </>
         ))} */}
-        <p>냥</p>
-        <ChImg src={`${process.env.PUBLIC_URL}/img/ch.png`} />
+        <p style={{ marginRight: '25px' }}>냥</p>
+        <ChImg src={`${process.env.PUBLIC_URL}/img/ch4.png`} />
         <p>
           업뎃예정입니다! <br /> 조금만 기다려주세용 :{')'}
         </p>
